@@ -1018,12 +1018,14 @@ function chipRain() {
 /* ── EGG: dice ──────────────────────────────────── */
 const PIPS = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
 function face(el, n) { el.innerHTML = Array.from({ length: 9 }, (_, i) => `<b class="${PIPS[n].includes(i) ? 'on' : ''}"></b>`).join(''); }
-const d1 = $('#d1'), d2 = $('#d2'); face(d1, 5); face(d2, 2);
+const d1 = $('#d1'), d2 = $('#d2'); face(d1, 6); face(d2, 3); // resting faces must not already read 7
+let rolling = false;
 function roll() {
+  if (rolling) return; rolling = true;
   [d1, d2].forEach(d => { d.classList.remove('roll'); void d.offsetWidth; d.classList.add('roll'); });
   let n = 0; const iv = setInterval(() => { face(d1, 1 + Math.random() * 6 | 0); face(d2, 1 + Math.random() * 6 | 0); if (++n > 7) { clearInterval(iv); done(); } }, 80);
   function done() {
-    const a = 1 + Math.random() * 6 | 0, b = 1 + Math.random() * 6 | 0; face(d1, a); face(d2, b);
+    const a = 1 + Math.random() * 6 | 0, b = 1 + Math.random() * 6 | 0; face(d1, a); face(d2, b); rolling = false;
     $('#dsum').textContent = `${a + b}${a + b === 7 ? ' ✦' : ''}`;
     if (a + b === 7) unlock('seven', 'Lucky seven. The dice remember who rolled them.');
   }
