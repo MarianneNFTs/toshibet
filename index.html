@@ -179,12 +179,16 @@ h2,h3{text-wrap:balance;margin:0;font-weight:400}
 .tassel.pulled{animation:tpull .9s cubic-bezier(.3,1.6,.5,1)}
 @keyframes tswing{50%{transform:rotate(1.5deg)}}
 @keyframes tpull{40%{transform:translateY(60px)}}
-.lightsout{position:fixed;inset:0;z-index:89;pointer-events:none;opacity:0;transition:opacity 1.2s;
-  background:radial-gradient(circle 160px at var(--lx,50%) var(--ly,50%),transparent 0,rgba(3,1,4,.6) 60%,rgba(3,1,4,.97) 100%)}
+/* "toshi" egg: the house goes fully dark; the spotlight finds the club's gold fan wallpaper */
+.lightsout{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0;transition:opacity 1.2s;background:#030104}
+.lightsout::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2780%27%20height=%2780%27%20viewBox=%270%200%2080%2080%27%3E%3Cg%20fill=%27none%27%20stroke=%27%23d8b45e%27%20stroke-width=%271.1%27%3E%3Cpath%20d=%27M2%2040A38%2038%200%200%201%2078%2040M11%2040A29%2029%200%200%201%2069%2040M20%2040A20%2020%200%200%201%2060%2040M29%2040A11%2011%200%200%201%2051%2040M-38%2080A38%2038%200%200%201%2038%2080M-29%2080A29%2029%200%200%201%2029%2080M-20%2080A20%2020%200%200%201%2020%2080M-11%2080A11%2011%200%200%201%2011%2080M42%2080A38%2038%200%200%201%20118%2080M51%2080A29%2029%200%200%201%20109%2080M60%2080A20%2020%200%200%201%20100%2080M69%2080A11%2011%200%200%201%2091%2080M-38%200A38%2038%200%200%201%2038%200M-29%200A29%2029%200%200%201%2029%200M-20%200A20%2020%200%200%201%2020%200M-11%200A11%2011%200%200%201%2011%200M42%200A38%2038%200%200%201%20118%200M51%200A29%2029%200%200%201%20109%200M60%200A20%2020%200%200%201%20100%200M69%200A11%2011%200%200%201%2091%200%27/%3E%3C/g%3E%3Cg%20fill=%27%23d8b45e%27%3E%3Ccircle%20cx=%2740%27%20cy=%2740%27%20r=%272%27/%3E%3Ccircle%20cx=%270%27%20cy=%2780%27%20r=%272%27/%3E%3Ccircle%20cx=%2780%27%20cy=%2780%27%20r=%272%27/%3E%3Ccircle%20cx=%270%27%20cy=%270%27%20r=%272%27/%3E%3Ccircle%20cx=%2780%27%20cy=%270%27%20r=%272%27/%3E%3C/g%3E%3C/svg%3E") 0 0/80px 80px;
+  -webkit-mask:radial-gradient(circle 240px at var(--lx,50%) var(--ly,50%),#000 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.06) 100%);
+  mask:radial-gradient(circle 240px at var(--lx,50%) var(--ly,50%),#000 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.06) 100%)}
+.lightsout::after{content:"";position:absolute;inset:0;background:radial-gradient(circle 260px at var(--lx,50%) var(--ly,50%),rgba(255,214,150,.10),transparent 70%)}
 .lightsout.on{opacity:1}
-.whisper{position:fixed;inset:0;z-index:88;display:grid;place-items:center;pointer-events:none;opacity:0;transition:opacity 1.2s;text-align:center;padding:0 var(--gutter-r) 0 var(--gutter-l)}
+.whisper{position:fixed;inset:0;z-index:101;display:grid;place-items:center;pointer-events:none;opacity:0;transition:opacity 1.2s;text-align:center;padding:0 var(--gutter-r) 0 var(--gutter-l)}
 .whisper.on{opacity:1}
-.whisper p{font-family:var(--f-script);font-size:clamp(40px,7vw,96px);line-height:1.1;color:var(--gold-hi);margin:0;max-width:16ch}
+.whisper p{font-family:var(--f-script);font-size:clamp(40px,7vw,96px);line-height:1.1;color:var(--gold-hi);margin:0;max-width:16ch;text-shadow:0 0 30px #030104,0 0 60px #030104,0 0 18px rgba(244,220,152,.35)}
 
 /* ───────── CREED ───────── */
 #creed{height:260vh;position:relative;background:linear-gradient(180deg,var(--ink),#0e0811 40%,var(--ink))}
