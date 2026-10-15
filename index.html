@@ -52,6 +52,9 @@ button,input{font:inherit;color:inherit}
 .label{font-family:var(--f-label);letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:var(--gold)}
 .wrap{max-width:1180px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
 h2,h3{text-wrap:balance;margin:0;font-weight:400}
+/* Bodoni at large sizes thins its hairlines to near-invisible; use the sturdier text cut */
+.creed-text,.house-head h2,.plaque h3,.act-head h2,.letter h3,.qtext,.arch h4,.marquee span,.cc-sub,.toast .m,.arch .motto2{font-optical-sizing:none;font-variation-settings:"opsz" 18}
+.house-head h2,.act-head h2,.plaque h3,.letter h3{font-weight:500}
 
 /* grain + vignette over everything */
 .grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
@@ -187,8 +190,8 @@ h2,h3{text-wrap:balance;margin:0;font-weight:400}
 #creed{height:260vh;position:relative;background:linear-gradient(180deg,var(--ink),#0e0811 40%,var(--ink))}
 #creed .pin{display:grid;place-items:center}
 .creed-box{max-width:1080px;padding-left:var(--gutter-l);padding-right:var(--gutter-r);display:grid;gap:34px;justify-items:start}
-.creed-text{font-family:var(--f-display);font-size:clamp(30px,4.6vw,66px);line-height:1.12;color:var(--ivory);margin:0;font-weight:400;letter-spacing:-.01em}
-.creed-text .w{opacity:.16;transition:opacity .5s,color .5s;display:inline}
+.creed-text{font-family:var(--f-display);font-size:clamp(28px,4.2vw,60px);line-height:1.18;color:var(--ivory);margin:0;font-weight:500;letter-spacing:.005em;max-width:24ch}
+.creed-text .w{opacity:.32;transition:opacity .5s,color .5s;display:inline}
 .creed-text .w.on{opacity:1}
 .creed-text em{font-style:italic;color:var(--gold-hi)}
 .creed-sig{display:flex;align-items:center;gap:18px}
