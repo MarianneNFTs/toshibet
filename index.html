@@ -7,7 +7,13 @@
 <meta property="og:title" content="Toshi.bet Social Club">
 <meta property="og:description" content="Good players. Better people. Membership by petition.">
 <meta name="theme-color" content="#0b0710">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Ccircle cx=%2720%27 cy=%2720%27 r=%2719%27 fill=%27%23b81e28%27 stroke=%27%23c9a24a%27 stroke-width=%272%27/%3E%3Cpath d=%27M12 13h16v4h-6v12h-4V17h-6z%27 fill=%27%23efe5cf%27/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/brand/icon-192.png">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<meta property="og:image" content="/brand/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 <title>Toshi.bet Social Club</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -76,7 +82,7 @@ h2,h3{text-wrap:balance;margin:0;font-weight:400}
   padding:calc(14px + env(safe-area-inset-top,0px)) var(--gutter-r) 14px var(--gutter-l);pointer-events:none}
 .nav > *{pointer-events:auto}
 .mono{display:flex;align-items:center;gap:12px;text-decoration:none}
-.mono svg{width:38px;height:38px}
+.mono img{width:40px;height:auto;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
 .mono span{font-family:var(--f-label);letter-spacing:.28em;font-size:11px;color:var(--ivory)}
 .nav-r{display:flex;align-items:center;gap:14px}
 .secrets{font-family:var(--f-label);font-size:11px;letter-spacing:.24em;color:var(--gold);background:rgba(11,7,16,.55);border:1px solid var(--line);padding:8px 12px;border-radius:40px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:help}
@@ -207,6 +213,7 @@ h2,h3{text-wrap:balance;margin:0;font-weight:400}
 .marquee{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;background:#0d0710}
 .marquee .row{display:flex;gap:56px;white-space:nowrap;width:max-content;will-change:transform}
 .marquee span{font-family:var(--f-display);font-style:italic;font-size:clamp(28px,4vw,52px);color:var(--ivory)}
+.marquee .mq{height:clamp(30px,3.4vw,44px);width:auto;display:block}
 .marquee span.g{font-family:var(--f-label);font-style:normal;font-size:16px;letter-spacing:.4em;color:var(--gold);align-self:center}
 
 /* ───────── HOUSE (horizontal) ───────── */
@@ -216,6 +223,9 @@ h2,h3{text-wrap:balance;margin:0;font-weight:400}
 .house-head h2{font-family:var(--f-display);font-size:clamp(40px,6vw,88px);line-height:.95;color:var(--ivory)}
 .house-head h2 i{font-family:var(--f-script);font-style:normal;color:var(--crimson);font-size:1.15em}
 .house-head p{max-width:34ch;margin:0}
+.roundel{position:relative;width:clamp(92px,10vw,140px);aspect-ratio:1;flex-shrink:0}
+.roundel img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.roundel .ring{will-change:transform}
 .track{display:flex;gap:3vw;padding-left:max(var(--gutter-l),calc((100vw - 1180px)/2 + 16px));will-change:transform}
 .plaque{flex:0 0 min(440px,78vw);min-height:min(56vh,480px);position:relative;padding:38px 34px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;
   background:linear-gradient(160deg,#2b0710,#170309 70%);border:1px solid var(--line);box-shadow:0 40px 80px -30px #000,inset 0 0 0 8px rgba(11,7,16,.6),inset 0 0 0 9px var(--line)}
@@ -273,8 +283,8 @@ section.act{position:relative;padding-block:clamp(90px,14vh,170px)}
 .code{font-family:var(--f-mono);font-size:22px;letter-spacing:.2em;color:#1d1430;background:#f7ecd2;border:1px dashed #a8916a;padding:6px 12px;display:inline-block;user-select:all}
 .house-door{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin:8px 0 30px}
 @media (max-width:600px){.house-door{grid-template-columns:1fr}}
-.door{width:120px;height:160px;border-radius:60px 60px 4px 4px;background:linear-gradient(180deg,#1d1430,#0b0814);display:grid;place-items:center;box-shadow:0 0 0 3px #c9a24a,0 0 0 8px #1d1430,0 20px 40px -10px rgba(0,0,0,.6)}
-.door svg{width:56px;height:56px}
+.door{width:120px;height:160px;border-radius:60px 60px 4px 4px;background:linear-gradient(180deg,#2a1d6b,#1a1049 60%,#0e0930);display:grid;place-items:center;box-shadow:0 0 0 3px #c9a24a,0 0 0 8px #1d1430,0 20px 40px -10px rgba(0,0,0,.6)}
+.door img{width:72px;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
 .reflink{font-family:var(--f-mono);font-size:15px;color:#6a5640;word-break:break-all}
 
 /* quiz */
@@ -329,7 +339,7 @@ section.act{position:relative;padding-block:clamp(90px,14vh,170px)}
 .cf .brand{display:grid;line-height:1}
 .cf .brand b{font-family:var(--f-mark);font-weight:900;font-stretch:125%;font-size:clamp(13px,3.6vw,19px);letter-spacing:.02em}
 .cf .brand i{font-family:var(--f-script);font-style:normal;font-size:clamp(17px,4.4vw,25px);margin-top:-2px}
-.cf .medal{width:15%;aspect-ratio:1;color:var(--m-ink);filter:drop-shadow(0 1px 0 rgba(255,255,255,.3))}
+.cf .medal{width:13%;aspect-ratio:2000/1874;background:var(--m-ink);-webkit-mask:url("/brand/mascot-engrave.png") center/contain no-repeat;mask:url("/brand/mascot-engrave.png") center/contain no-repeat;filter:drop-shadow(0 1px 0 rgba(255,255,255,.3)) drop-shadow(0 -1px 0 rgba(0,0,0,.35))}
 .cf .mid{display:flex;align-items:center;gap:5%}
 .chip{width:15%;aspect-ratio:1.3;border-radius:16%;position:relative;overflow:hidden;
   background:linear-gradient(135deg,#f6e2a2,#c49a3e 40%,#efd38a 60%,#9c7426);box-shadow:inset 0 0 0 1px rgba(80,55,10,.6),0 1px 1px rgba(0,0,0,.4)}
@@ -380,6 +390,8 @@ section.act{position:relative;padding-block:clamp(90px,14vh,170px)}
 .m-rose{--m-base:linear-gradient(125deg,#9c5a4a,#f1c3b0 24%,#c0806b 44%,#fbdccd 58%,#a8634f 78%,#e7b19c);--m-edge:#844a3c;--m-ink:#6a3226;--m-emb:0 1px 0 rgba(255,235,225,.7),0 -1px 0 rgba(70,25,15,.5);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 1px,transparent 1px 3px);--m-spec:.85}
 .m-titanium{--m-base:radial-gradient(circle at 30% 40%,#7d8288,#4a4e53 60%,#33363a);--m-edge:#2b2e31;--m-ink:#c9ccd0;--m-emb:0 -1px 0 rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.25);--m-tex:repeating-radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0 1px,transparent 1px 3px);--m-spec:.6}
 .m-crimson{--m-base:radial-gradient(120% 120% at 30% 20%,#b01a2c,#6a0a17 50%,#2b030a);--m-edge:#3a050e;--m-ink:#e8c477;--m-emb:0 1px 0 rgba(0,0,0,.6),0 0 6px rgba(255,210,120,.25);--m-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23v)'/%3E%3C/svg%3E");--m-texo:.35;--m-spec:.5;--m-specblend:overlay}
+.m-toshiblue{--m-base:linear-gradient(135deg,#2a3dff,#0000d8 42%,#3346ff 68%,#0000a8);--m-edge:#00007a;--m-ink:#eef0ff;--m-emb:0 -1px 0 rgba(0,0,40,.6),0 1px 0 rgba(255,255,255,.35);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px);--m-spec:.55}
+.m-dojo{--m-base:linear-gradient(135deg,#ff8f33,#f06400 42%,#ff7d1a 68%,#c75000);--m-edge:#9a3e00;--m-ink:#1a1049;--m-emb:0 1px 0 rgba(255,220,180,.55),0 -1px 0 rgba(60,20,0,.45);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 3px);--m-spec:.6}
 .m-navy{--m-base:linear-gradient(135deg,#252a5e,#121535 50%,#1f2350);--m-edge:#0b0d22;--m-ink:#d9b866;--m-emb:0 -1px 0 rgba(0,0,0,.7),0 1px 0 rgba(255,230,160,.25);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);--m-spec:.45}
 .m-pearl{--m-base:linear-gradient(125deg,#e9e4ef,#f8f1e8 20%,#dfe8f2 40%,#f4e1ec 60%,#e3f0ea 80%,#efe7f6);--m-edge:#bdb5c4;--m-ink:#5a4f66;--m-emb:0 1px 0 rgba(255,255,255,.9),0 -1px 0 rgba(60,50,70,.35);--m-tex:conic-gradient(from 90deg at 30% 60%,#ffd6f0,#d6f3ff,#fff3c9,#e2d6ff,#ffd6f0);--m-texo:.35;--m-spec:.9}
 .m-genesis{--m-base:linear-gradient(135deg,#120c06,#050403 50%,#1a1006);--m-edge:#f7931a;--m-ink:#f7931a;--m-emb:0 0 8px rgba(247,147,26,.45),0 -1px 0 rgba(0,0,0,.9);--m-tex:repeating-linear-gradient(0deg,rgba(247,147,26,.06) 0 1px,transparent 1px 7px),repeating-linear-gradient(90deg,rgba(247,147,26,.06) 0 1px,transparent 1px 7px);--m-texo:1;--m-blend:normal;--m-spec:.35}
@@ -399,6 +411,9 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
 .rope{position:relative;height:120px;max-width:900px;margin:0 auto 60px}
 .rope svg{width:100%;height:100%}
 .foot-grid{display:grid;gap:30px;justify-items:center}
+.playat{display:grid;justify-items:center;gap:12px;text-decoration:none}
+.playat img{width:min(280px,70vw);height:auto;transition:transform .4s}
+.playat:hover img{transform:translateY(-2px)}
 .foot-grid .big{font-family:var(--f-script);font-size:clamp(54px,8vw,110px);color:var(--crimson);line-height:.9}
 .dicebox{display:flex;gap:18px;align-items:center;justify-content:center}
 .die{width:54px;height:54px;border-radius:10px;border:0;cursor:pointer;background:linear-gradient(145deg,#fbf7ee,#d9d0bd);box-shadow:inset 0 -3px 6px rgba(0,0,0,.25),0 10px 20px -8px #000;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:8px;gap:2px}
@@ -433,7 +448,7 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
 
 <header class="nav">
   <a class="mono" href="#theatre" aria-label="Toshi.bet Social Club, back to top">
-    <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="#c9a24a"/><circle cx="20" cy="20" r="15" fill="#b81e28"/><path d="M12 13h16v4h-6v12h-4V17h-6z" fill="#efe5cf"/></svg>
+    <img src="/brand/mascot.webp" alt="" width="40" height="37">
     <span>Toshi.bet&nbsp;Social&nbsp;Club</span>
   </a>
   <div class="nav-r">
@@ -485,9 +500,9 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
             </defs>
             <circle cx="100" cy="100" r="96" fill="url(#sg)"/>
             <circle cx="100" cy="100" r="88" fill="none" stroke="#5a3f10" stroke-width="1.5"/>
-            <circle cx="100" cy="100" r="56" fill="#7c0f1d" stroke="#5a3f10" stroke-width="2"/>
+            <circle cx="100" cy="100" r="56" fill="#1a1049" stroke="#5a3f10" stroke-width="2"/>
             <text font-family="Marcellus SC, Georgia, serif" font-size="13" letter-spacing="5" fill="#4a3208"><textPath href="#arc" startOffset="0">TOSHI.BET ✦ SOCIAL CLUB ✦ INTERNET CITIZENS ✦</textPath></text>
-            <path d="M74 76h52v14h-19v40h-14V90H74z" fill="url(#sg)" stroke="#4a3208" stroke-width="1.5"/>
+            <image href="/brand/mascot.webp" x="63" y="64" width="74" height="69"/>
           </svg>
         </button>
         <div class="cc-sub">Scroll to raise the curtain</div>
@@ -515,6 +530,7 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
   <div class="pin">
     <div class="house-head">
       <h2>The <i>House</i></h2>
+      <div class="roundel" aria-hidden="true"><img class="ring" id="roundelRing" src="/brand/roundel-ring.webp" alt=""><img src="/brand/roundel-centre.webp" alt=""></div>
       <p>The club meets at Toshi.bet, a crypto-native casino built for players who want fast money and fair math.</p>
     </div>
     <div class="track" id="track">
@@ -591,7 +607,7 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
           <h3>Take your seat at Toshi.bet.</h3>
           <p class="lede">Members play under the club's introduction. Open the house through the club door, sign in or create your account, then return here.</p>
           <div class="house-door">
-            <div class="door"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="#b81e28" stroke="#c9a24a"/><path d="M12 13h16v4h-6v12h-4V17h-6z" fill="#efe5cf"/></svg></div>
+            <div class="door"><img src="/brand/mascot.webp" alt=""></div>
             <div style="display:grid;gap:12px;justify-items:start">
               <a class="btn" id="houseLink" href="https://toshi.bet/r/mariannehere" target="_blank" rel="noopener">Sign in to Toshi.bet ↗</a>
               <span class="reflink">toshi.bet/r/mariannehere</span>
@@ -617,7 +633,7 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
           </div>
           <div class="reading" id="reading" hidden>
             <div class="tarot" id="tarot"><div class="in">
-              <div class="f back"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#c9a24a"/><circle cx="50" cy="50" r="30" fill="#2a040b" stroke="#c9a24a"/><path d="M36 38h28v8H54v22h-8V46H36z" fill="#c9a24a"/></svg></div>
+              <div class="f back"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#c9a24a"/><circle cx="50" cy="50" r="30" fill="#1a1049" stroke="#c9a24a"/><image href="/brand/mascot.webp" x="30" y="31" width="40" height="37"/></svg></div>
               <div class="f front"><span class="num" id="tNum">VII</span><span id="tGlyph"></span><span class="nm" id="tName">THE SHOGUN</span></div>
             </div></div>
             <div class="arch">
@@ -663,7 +679,7 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
               <div class="cf">
                 <div class="top">
                   <div class="brand eng"><b>TOSHI.BET</b><i>Social Club</i></div>
-                  <svg class="medal" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="20" r="14.5" fill="none" stroke="currentColor" stroke-width=".6"/><path d="M12 13h16v4h-6v12h-4V17h-6z" fill="currentColor"/></svg>
+                  <span class="medal" aria-hidden="true"></span>
                 </div>
                 <div class="mid"><span class="chip"></span><svg class="nfc" viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8a6 6 0 010 8M8 5a10 10 0 010 14M12 2a14 14 0 010 20"/></svg></div>
                 <div>
@@ -733,6 +749,7 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
   </div>
   <div class="wrap foot-grid">
     <div class="big">Internet Citizens</div>
+    <a class="playat" href="https://toshi.bet/r/mariannehere" target="_blank" rel="noopener"><span class="label">The club plays at</span><img src="/brand/lockup.webp" alt="Toshi.bet"></a>
     <div class="dicebox">
       <button class="die" id="d1" aria-label="Roll the dice"></button>
       <button class="die" id="d2" aria-label="Roll the dice"></button>
@@ -884,9 +901,10 @@ const creedText = $('#creedText');
 const words = $$('.w', creedText);
 
 // marquee
-const marq = $('#marq');
+const marq = $('#marq'), roundelRing = $('#roundelRing');
 const mItems = ['Internet citizens', '✦', 'Same game, higher standards', '✦', 'Est. 2024', '✦', 'Discipline fuels freedom', '✦', 'Good players, better people', '✦'];
-marq.innerHTML = [...mItems, ...mItems, ...mItems].map(t => t === '✦' ? '<span class="g">✦</span>' : `<span>${t}</span>`).join('');
+const mSrc = $('.mono img').src;
+marq.innerHTML = [...mItems, ...mItems, ...mItems].map(t => t === '✦' ? `<span class="g"><img class="mq" src="${mSrc}" alt=""></span>` : `<span>${t}</span>`).join('');
 let mx = 0, lastY = scrollY, vel = 0;
 
 let encore = 0; // 0..1 override that closes the curtain (easter egg)
@@ -930,6 +948,8 @@ function frame(t) {
     const hp = secP(house);
     track.style.transform = `translateX(${-ease(hp) * trackSpan}px)`;
   }
+  // the house badge turns with the scroll
+  roundelRing.style.transform = `rotate(${(y * .12 + t * .006) % 360}deg)`;
   // marquee
   mx -= .5 + Math.abs(vel) * .25;
   const third = marq.scrollWidth / 3; if (-mx > third) mx += third;
@@ -1159,6 +1179,8 @@ const METALS = [
   ['rose', 'Rose Gold', 'Warm rose alloy with a satin brush.'],
   ['titanium', 'Titanium', 'Bead-blasted grade-5 titanium with a spun finish.'],
   ['crimson', 'Velour Crimson', 'Deep crimson lacquer with a velvet hand and gold inlay. The curtain, in your wallet.'],
+  ['toshiblue', 'Toshi Blue', 'Electric-blue anodised aluminium in the house colour of Toshi.bet, engraved in white.'],
+  ['dojo', 'Dojo Orange', 'Blaze-orange anodised finish with navy engraving, straight from the Dojo.'],
   ['navy', 'Midnight Navy', 'Navy anodised steel and gold, in the club\'s own colours.'],
   ['pearl', 'Mother of Pearl', 'Iridescent pearl inlay that changes as you tilt it.'],
   ['genesis', 'Genesis', 'Block zero. For those who know the name.', 'secret'],
