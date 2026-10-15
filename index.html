@@ -188,6 +188,8 @@ h2,h3{text-wrap:balance;margin:0;font-weight:400}
 .lightsout.on{opacity:1}
 .whisper{position:fixed;inset:0;z-index:101;display:grid;place-items:center;pointer-events:none;opacity:0;transition:opacity 1.2s;text-align:center;padding:0 var(--gutter-r) 0 var(--gutter-l)}
 .whisper.on{opacity:1}
+/* the message is painted in the dark: only the spotlight reveals it */
+.whisper{-webkit-mask:radial-gradient(circle 190px at var(--lx,50%) var(--ly,50%),#000 35%,transparent 100%);mask:radial-gradient(circle 190px at var(--lx,50%) var(--ly,50%),#000 35%,transparent 100%)}
 .whisper p{font-family:var(--f-script);font-size:clamp(40px,7vw,96px);line-height:1.1;color:var(--gold-hi);margin:0;max-width:16ch;text-shadow:0 0 30px #030104,0 0 60px #030104,0 0 18px rgba(244,220,152,.35)}
 
 /* ───────── CREED ───────── */
@@ -941,7 +943,7 @@ requestAnimationFrame(frame);
 const cur = $('.cursor'); let cx = innerWidth / 2, cy = innerHeight / 2, rx = cx, ry = cy;
 addEventListener('pointermove', e => {
   cx = e.clientX; cy = e.clientY;
-  $('#lightsout').style.setProperty('--lx', cx + 'px'); $('#lightsout').style.setProperty('--ly', cy + 'px');
+  document.documentElement.style.setProperty('--lx', cx + 'px'); document.documentElement.style.setProperty('--ly', cy + 'px');
   cur.classList.toggle('hot', !!e.target.closest('a,button,input,.mcard,.opt'));
 }, { passive: true });
 (function cl() { rx += (cx - rx) * .18; ry += (cy - ry) * .18; cur.firstElementChild.style.transform = `translate(${rx}px,${ry}px)`; cur.lastElementChild.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(cl); })();
@@ -993,7 +995,7 @@ addEventListener('keydown', e => {
 function lightsOut() {
   const lo = $('#lightsout'), w = $('#whisper');
   lo.classList.add('on'); setTimeout(() => w.classList.add('on'), 700);
-  setTimeout(() => { lo.classList.remove('on'); w.classList.remove('on'); unlock('toshi', 'You said his name. The house went dark to listen.'); }, 6500);
+  setTimeout(() => { lo.classList.remove('on'); w.classList.remove('on'); unlock('toshi', 'You said his name. The house went dark to listen.'); }, 11000);
 }
 function chipRain() {
   const cv = $('#chips'), ctx = cv.getContext('2d'), dpr = Math.min(2, devicePixelRatio || 1);
