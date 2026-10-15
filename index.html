@@ -1,0 +1,1308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Toshi.bet Social Club. Good players, better people. Membership by petition.">
+<meta property="og:title" content="Toshi.bet Social Club">
+<meta property="og:description" content="Good players. Better people. Membership by petition.">
+<meta name="theme-color" content="#0b0710">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Ccircle cx=%2720%27 cy=%2720%27 r=%2719%27 fill=%27%23b81e28%27 stroke=%27%23c9a24a%27 stroke-width=%272%27/%3E%3Cpath d=%27M12 13h16v4h-6v12h-4V17h-6z%27 fill=%27%23efe5cf%27/%3E%3C/svg%3E">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Toshi.bet Social Club</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800;125,900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marcellus+SC&family=Pinyon+Script&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: a theatre. Velvet curtains part on scroll to reveal the crest on a lit stage,
+   then the house rules, the initiation rite, and the card atelier play as acts below. */
+:root{
+  --ink:#0b0710;          /* the dark house */
+  --wall:#140a12;         /* stage back wall */
+  --velvet:#7c0f1d;       /* curtain crimson */
+  --velvet-deep:#2a040b;
+  --gold:#c9a24a;
+  --gold-hi:#f4dc98;
+  --gold-lo:#6f5019;
+  --ivory:#efe5cf;
+  --ivory-dim:#b8ab93;
+  --crimson:#d9323c;
+  --navy:#1a1d44;
+  --line:rgba(201,162,74,.28);
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-script:"Pinyon Script","Snell Roundhand","Apple Chancery",cursive;
+  --f-body:"Cormorant Garamond","Garamond",Georgia,serif;
+  --f-label:"Marcellus SC","Trajan Pro",Georgia,serif;
+  --f-mark:"Archivo","Arial Black","Helvetica Neue",sans-serif;
+  --f-mono:"Share Tech Mono","OCR A Std","Courier New",monospace;
+  --foil:linear-gradient(100deg,#7d5a1f 0%,#e9cd7f 18%,#a77a2a 34%,#fff0c0 50%,#b08332 64%,#f1d68c 82%,#7d5a1f 100%);
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+html{background:var(--ink)}
+body{background:var(--ink);color:var(--ivory-dim);font-family:var(--f-body);font-size:19px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--crimson);color:var(--ivory)}
+a{color:var(--gold-hi)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:1px solid var(--gold-hi);outline-offset:4px}
+.foil{background:var(--foil);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 9s linear infinite}
+@keyframes shimmer{to{background-position:-220% 0}}
+.label{font-family:var(--f-label);letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:var(--gold)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+h2,h3{text-wrap:balance;margin:0;font-weight:400}
+
+/* grain + vignette over everything */
+.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}}
+
+/* cursor */
+.cursor{position:fixed;left:0;top:0;z-index:120;pointer-events:none;mix-blend-mode:screen}
+.cursor i{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid var(--gold);border-radius:50%;transition:width .35s,height .35s,margin .35s,background .35s}
+.cursor b{position:absolute;width:4px;height:4px;margin:-2px 0 0 -2px;background:var(--gold-hi);border-radius:50%}
+.cursor.hot i{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(201,162,74,.12)}
+@media (hover:none),(pointer:coarse){.cursor{display:none}}
+
+/* progress + nav */
+.progress{position:fixed;top:0;left:0;right:0;height:1px;z-index:100;padding-top:env(safe-area-inset-top,0px)}
+.progress i{display:block;height:1px;background:linear-gradient(90deg,transparent,var(--gold-hi));transform-origin:0 50%;transform:scaleX(0)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:95;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:calc(14px + env(safe-area-inset-top,0px)) var(--gutter-r) 14px var(--gutter-l);pointer-events:none}
+.nav > *{pointer-events:auto}
+.mono{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mono svg{width:38px;height:38px}
+.mono span{font-family:var(--f-label);letter-spacing:.28em;font-size:11px;color:var(--ivory)}
+.nav-r{display:flex;align-items:center;gap:14px}
+.secrets{font-family:var(--f-label);font-size:11px;letter-spacing:.24em;color:var(--gold);background:rgba(11,7,16,.55);border:1px solid var(--line);padding:8px 12px;border-radius:40px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:help}
+.secrets .n{color:var(--gold-hi)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-label);letter-spacing:.26em;text-transform:uppercase;font-size:12px;text-decoration:none;cursor:pointer;
+  color:#1b1205;background:var(--foil);background-size:200% 100%;border:0;padding:15px 26px;border-radius:2px;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 10px 30px -10px rgba(201,162,74,.6);transition:background-position .8s,transform .3s}
+.btn:hover{background-position:100% 0;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--gold-hi);border:1px solid var(--gold);box-shadow:none}
+.btn.ghost:hover{background:rgba(201,162,74,.1)}
+.btn.sm{padding:10px 16px;font-size:11px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+@media (max-width:640px){.mono span{display:none}.nav .btn{display:none}}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:110;transform:translate(-50%,160%);transition:transform .7s cubic-bezier(.2,.9,.2,1);
+  max-width:min(460px,calc(100vw - 32px));background:linear-gradient(180deg,#3a0610,#1e0308);border:1px solid var(--gold);padding:14px 22px;text-align:center;box-shadow:0 30px 60px -20px #000}
+.toast.on{transform:translate(-50%,0)}
+.toast .t{font-family:var(--f-label);letter-spacing:.3em;font-size:10px;color:var(--gold)}
+.toast .m{font-family:var(--f-display);font-style:italic;color:var(--ivory);font-size:18px;line-height:1.3}
+
+/* ───────── THEATRE ───────── */
+#theatre{height:320vh;position:relative}
+.pin{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden}
+.stage{position:absolute;inset:0;background:
+  radial-gradient(60% 55% at 50% 38%,#2a1420 0%,#160a12 55%,#07040a 100%)}
+.stage::before{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(90deg,rgba(0,0,0,.35) 0 2px,transparent 2px 46px),radial-gradient(70% 60% at 50% 40%,transparent,rgba(0,0,0,.7))}
+.floor{position:absolute;left:-20%;right:-20%;bottom:-6%;height:34%;transform-origin:50% 0;transform:perspective(600px) rotateX(58deg);
+  background:linear-gradient(180deg,rgba(255,190,120,.10),transparent 40%),repeating-linear-gradient(90deg,#2a150c 0 58px,#1d0e08 58px 60px,#311a0e 60px 120px,#190c06 120px 122px);
+  box-shadow:0 -40px 80px rgba(0,0,0,.8) inset}
+.foots{position:absolute;left:0;right:0;bottom:3%;display:flex;justify-content:space-around;padding:0 8%}
+.foots i{width:46px;height:10px;border-radius:50%;background:#ffd28a;box-shadow:0 0 18px 6px rgba(255,190,110,.55),0 -30px 90px 30px rgba(255,170,90,.18);opacity:var(--lit,.2)}
+.beam{position:absolute;top:-10%;width:60vmax;height:130%;left:50%;transform-origin:50% 0;pointer-events:none;mix-blend-mode:screen;opacity:calc(var(--lit,.2) * .85);
+  background:conic-gradient(from 180deg at 50% 0,transparent 168deg,rgba(255,228,170,.18) 176deg,rgba(255,236,190,.28) 180deg,rgba(255,228,170,.18) 184deg,transparent 192deg);filter:blur(6px)}
+.beam.b1{transform:translateX(-50%) rotate(0deg)}
+.beam.b2{transform:translateX(-50%) rotate(16deg);left:20%;opacity:calc(var(--lit,.2) * .45)}
+.beam.b3{transform:translateX(-50%) rotate(-16deg);left:80%;opacity:calc(var(--lit,.2) * .45)}
+.pool{position:absolute;left:50%;bottom:4%;width:70vmin;height:16vmin;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(255,222,160,.28),transparent);opacity:var(--lit,.2);mix-blend-mode:screen}
+#dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen}
+
+.show{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:12vh var(--gutter-r) 8vh var(--gutter-l)}
+.show-inner{display:grid;justify-items:center;gap:1.2vh;width:100%;max-width:1100px;will-change:transform}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--f-label);letter-spacing:.42em;font-size:clamp(10px,1.1vw,13px);color:var(--ivory)}
+.eyebrow .star{color:var(--gold)}
+.wordmark{font-family:var(--f-mark);font-weight:900;font-stretch:125%;font-size:clamp(46px,11.2vw,168px);line-height:.86;letter-spacing:-.01em;margin:0;display:flex;justify-content:center;
+  filter:drop-shadow(0 2px 0 #5a3e12) drop-shadow(0 18px 30px rgba(0,0,0,.7))}
+.wordmark span{display:inline-block;background:var(--foil);background-size:400% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 12s linear infinite}
+.script{font-family:var(--f-script);color:var(--crimson);font-size:clamp(44px,8.4vw,128px);line-height:.8;margin-top:-1.2vw;text-shadow:0 0 1px #ffb3a8,0 2px 0 #4a0408,0 10px 40px rgba(217,50,60,.35)}
+.crest-row{display:grid;grid-template-columns:1fr minmax(0,auto) 1fr;align-items:center;gap:2vw;width:100%;margin-top:1vh}
+.motto{font-family:var(--f-label);letter-spacing:.3em;font-size:clamp(9px,1vw,13px);line-height:2;color:var(--ivory)}
+.motto::after{content:"";display:block;width:36px;height:1px;background:var(--gold);margin:12px auto 0}
+.crest{position:relative;width:min(560px,52vw);aspect-ratio:900/420;max-width:100%}
+.crest img{width:100%;height:100%;display:block;filter:drop-shadow(0 30px 40px rgba(0,0,0,.65))}
+.ember{position:absolute;left:55.6%;top:61.6%;width:7%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:0;background:transparent;cursor:pointer}
+.ember::after{content:"";position:absolute;inset:30%;border-radius:50%;background:#ff7a2e;opacity:0;box-shadow:0 0 10px 4px #ff6a1a;animation:ember 3.5s ease-in-out infinite}
+@keyframes ember{50%{opacity:.55}}
+.smoke{position:absolute;width:26px;height:26px;border-radius:50%;border:3px solid rgba(235,230,225,.55);filter:blur(1.5px);pointer-events:none;animation:smoke 2.6s ease-out forwards}
+@keyframes smoke{from{transform:translate(-50%,-50%) scale(.3);opacity:.9}to{transform:translate(calc(-50% + 30px),-180px) scale(2.6);opacity:0}}
+.est{font-family:var(--f-label);letter-spacing:.6em;font-size:12px;color:var(--ivory);margin-top:1vh}
+@media (max-width:720px){.crest-row{grid-template-columns:1fr}.motto{display:none}.crest{width:88vw}}
+
+/* curtains */
+.curtain{position:absolute;top:0;bottom:0;width:51%;z-index:5;will-change:transform}
+.curtain.l{left:0;transform-origin:0 50%}
+.curtain.r{right:0;transform-origin:100% 50%}
+.curtain .sway{position:absolute;inset:0;transform-origin:50% 0;animation:sway 9s ease-in-out infinite}
+.curtain.r .sway{animation-delay:-4.5s}
+@keyframes sway{50%{transform:skewX(.5deg)}}
+.curtain canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.curtain .seam{position:absolute;top:0;bottom:0;width:40px}
+.curtain.l .seam{right:0;background:linear-gradient(90deg,transparent,rgba(0,0,0,.55))}
+.curtain.r .seam{left:0;background:linear-gradient(270deg,transparent,rgba(0,0,0,.55))}
+.fringe{position:absolute;left:0;right:0;bottom:0;height:34px;
+  background:repeating-linear-gradient(90deg,#f0cf7c 0 1px,#8a6420 1px 2px,#d7b05a 2px 3px,transparent 3px 5px);
+  -webkit-mask:linear-gradient(180deg,#000 55%,transparent);mask:linear-gradient(180deg,#000 55%,transparent);filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))}
+.fringe::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:linear-gradient(180deg,#f6dc93,#a17a2c 60%,#5a3f10);box-shadow:0 2px 3px rgba(0,0,0,.5)}
+.valance{position:absolute;top:0;left:0;right:0;height:clamp(70px,13vh,140px);z-index:7;will-change:transform}
+.valance .v-cloth{position:absolute;inset:0;background:
+  radial-gradient(ellipse 50% 120% at 50% -20%,#a5182a 0%,#6c0c18 45%,#2a030a 85%) 0 0/ 20% 100%,#3a050e;
+  -webkit-mask:radial-gradient(ellipse 50% 32% at 50% 68%,#000 98%,transparent 100%) 0 0/20% 100% repeat-x,linear-gradient(#000 0 66%,transparent 66%);
+  mask:radial-gradient(ellipse 50% 32% at 50% 68%,#000 98%,transparent 100%) 0 0/20% 100% repeat-x,linear-gradient(#000 0 66%,transparent 66%);
+  filter:drop-shadow(0 14px 18px rgba(0,0,0,.75))}
+.valance .v-cloth::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(0,0,0,.25) 0 3px,transparent 3px 22px)}
+.valance .braid{position:absolute;left:0;right:0;top:calc(66% - 10px);height:6px;background:repeating-linear-gradient(135deg,#f5d98e 0 4px,#8a6420 4px 7px);box-shadow:0 2px 4px rgba(0,0,0,.6)}
+.valance .rod{position:absolute;left:0;right:0;top:0;height:10px;background:linear-gradient(180deg,#f6e3a8,#a07526 50%,#3d2a08)}
+.curtain-call{position:absolute;inset:0;z-index:8;display:grid;place-items:center;text-align:center;pointer-events:none}
+.cc-inner{display:grid;justify-items:center;gap:18px;margin-top:6vh}
+.seal{pointer-events:auto;width:clamp(120px,15vw,170px);aspect-ratio:1;border:0;padding:0;background:none;cursor:pointer;position:relative;filter:drop-shadow(0 18px 30px rgba(0,0,0,.6))}
+.seal svg{width:100%;height:100%;display:block}
+.seal .ring{position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--gold-hi);opacity:0;transform:scale(.9)}
+.seal.holding .ring{animation:hold 1.6s linear forwards}
+@keyframes hold{from{opacity:.2;clip-path:inset(0 0 100% 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+.cc-text{font-family:var(--f-label);letter-spacing:.42em;font-size:12px;color:var(--gold-hi);text-shadow:0 2px 8px #000}
+.cc-sub{font-family:var(--f-display);font-style:italic;color:var(--ivory);font-size:clamp(18px,2vw,24px);text-shadow:0 2px 12px #000}
+.scrollcue{width:1px;height:56px;background:linear-gradient(var(--gold-hi),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:0 0}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.tassel{position:absolute;z-index:6;right:12%;top:0;width:28px;height:62vh;border:0;background:none;cursor:pointer;padding:0;transform-origin:50% 0;animation:tswing 6s ease-in-out infinite}
+.tassel::before{content:"";position:absolute;left:50%;top:0;bottom:56px;width:3px;margin-left:-1.5px;background:repeating-linear-gradient(160deg,#f2d488 0 3px,#7d5a1d 3px 6px)}
+.tassel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;border-radius:40% 40% 10% 10%/30% 30% 10% 10%;
+  background:radial-gradient(circle at 50% 12%,#f8e2a4 0 9px,transparent 10px),repeating-linear-gradient(90deg,#e9c46e 0 1px,#86611f 1px 3px);box-shadow:0 10px 20px rgba(0,0,0,.6)}
+.tassel.pulled{animation:tpull .9s cubic-bezier(.3,1.6,.5,1)}
+@keyframes tswing{50%{transform:rotate(1.5deg)}}
+@keyframes tpull{40%{transform:translateY(60px)}}
+.lightsout{position:fixed;inset:0;z-index:89;pointer-events:none;opacity:0;transition:opacity 1.2s;
+  background:radial-gradient(circle 160px at var(--lx,50%) var(--ly,50%),transparent 0,rgba(3,1,4,.6) 60%,rgba(3,1,4,.97) 100%)}
+.lightsout.on{opacity:1}
+.whisper{position:fixed;inset:0;z-index:88;display:grid;place-items:center;pointer-events:none;opacity:0;transition:opacity 1.2s;text-align:center;padding:0 var(--gutter-r) 0 var(--gutter-l)}
+.whisper.on{opacity:1}
+.whisper p{font-family:var(--f-script);font-size:clamp(40px,7vw,96px);line-height:1.1;color:var(--gold-hi);margin:0;max-width:16ch}
+
+/* ───────── CREED ───────── */
+#creed{height:260vh;position:relative;background:linear-gradient(180deg,var(--ink),#0e0811 40%,var(--ink))}
+#creed .pin{display:grid;place-items:center}
+.creed-box{max-width:1080px;padding-left:var(--gutter-l);padding-right:var(--gutter-r);display:grid;gap:34px;justify-items:start}
+.creed-text{font-family:var(--f-display);font-size:clamp(30px,4.6vw,66px);line-height:1.12;color:var(--ivory);margin:0;font-weight:400;letter-spacing:-.01em}
+.creed-text .w{opacity:.16;transition:opacity .5s,color .5s;display:inline}
+.creed-text .w.on{opacity:1}
+.creed-text em{font-style:italic;color:var(--gold-hi)}
+.creed-sig{display:flex;align-items:center;gap:18px}
+.creed-sig .s{font-family:var(--f-script);font-size:44px;color:var(--gold)}
+
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;background:#0d0710}
+.marquee .row{display:flex;gap:56px;white-space:nowrap;width:max-content;will-change:transform}
+.marquee span{font-family:var(--f-display);font-style:italic;font-size:clamp(28px,4vw,52px);color:var(--ivory)}
+.marquee span.g{font-family:var(--f-label);font-style:normal;font-size:16px;letter-spacing:.4em;color:var(--gold);align-self:center}
+
+/* ───────── HOUSE (horizontal) ───────── */
+#house{position:relative;height:420vh;background:radial-gradient(80% 60% at 50% 50%,#1a0d18,var(--ink))}
+#house .pin{display:flex;flex-direction:column;justify-content:center;gap:4vh}
+.house-head{padding-left:var(--gutter-l);padding-right:var(--gutter-r);max-width:1180px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.house-head h2{font-family:var(--f-display);font-size:clamp(40px,6vw,88px);line-height:.95;color:var(--ivory)}
+.house-head h2 i{font-family:var(--f-script);font-style:normal;color:var(--crimson);font-size:1.15em}
+.house-head p{max-width:34ch;margin:0}
+.track{display:flex;gap:3vw;padding-left:max(var(--gutter-l),calc((100vw - 1180px)/2 + 16px));will-change:transform}
+.plaque{flex:0 0 min(440px,78vw);min-height:min(56vh,480px);position:relative;padding:38px 34px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;
+  background:linear-gradient(160deg,#2b0710,#170309 70%);border:1px solid var(--line);box-shadow:0 40px 80px -30px #000,inset 0 0 0 8px rgba(11,7,16,.6),inset 0 0 0 9px var(--line)}
+.plaque::before{content:"";position:absolute;inset:0;opacity:.35;background:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px);pointer-events:none}
+.plaque svg{width:64px;height:64px;color:var(--gold)}
+.plaque h3{font-family:var(--f-display);font-size:clamp(30px,3vw,42px);line-height:1.02;color:var(--ivory)}
+.plaque p{margin:0;font-size:18px}
+.plaque .k{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;color:var(--gold-hi)}
+.plaque.end{background:none;border:0;box-shadow:none;justify-content:center}
+.plaque.end h3{font-family:var(--f-script);font-size:64px;color:var(--gold-hi)}
+
+/* ───────── INITIATION ───────── */
+section.act{position:relative;padding-block:clamp(90px,14vh,170px)}
+.act-head{display:grid;gap:18px;margin-bottom:56px;max-width:760px}
+.act-head h2{font-family:var(--f-display);font-size:clamp(44px,6.4vw,96px);line-height:.95;color:var(--ivory);letter-spacing:-.015em}
+.act-head h2 i{font-family:var(--f-script);font-style:normal;color:var(--crimson);font-size:1.12em;letter-spacing:0}
+.act-head p{margin:0;max-width:56ch;font-size:20px}
+.rite{display:grid;grid-template-columns:280px minmax(0,1fr);gap:56px;align-items:start}
+@media (max-width:900px){.rite{grid-template-columns:1fr;gap:32px}}
+.steps{position:sticky;top:110px;display:grid;gap:4px;list-style:none;margin:0;padding:0}
+@media (max-width:900px){.steps{position:static;grid-template-columns:repeat(4,1fr);gap:6px}}
+.steps li{display:grid;grid-template-columns:48px 1fr;align-items:center;padding:14px 0;border-top:1px solid var(--line);color:var(--ivory-dim);transition:color .4s}
+.steps li .rn{font-family:var(--f-display);font-style:italic;font-size:28px;color:var(--gold-lo);transition:color .4s}
+.steps li .nm{font-family:var(--f-label);letter-spacing:.24em;font-size:12px;text-transform:uppercase}
+.steps li.cur{color:var(--ivory)}
+.steps li.cur .rn,.steps li.done .rn{color:var(--gold-hi)}
+.steps li.done .nm::after{content:" ✦";color:var(--gold)}
+@media (max-width:900px){.steps li{grid-template-columns:1fr;text-align:center;gap:2px}.steps li .nm{font-size:9px;letter-spacing:.14em}}
+.status-pill{margin-top:22px;font-family:var(--f-label);letter-spacing:.2em;font-size:11px;color:var(--gold);border:1px solid var(--line);padding:10px 14px;display:inline-block}
+@media (max-width:900px){.status-pill{grid-column:1/-1;text-align:center}}
+
+.letter{position:relative;color:#2c1d10;padding:clamp(28px,5vw,64px);
+  background:radial-gradient(120% 80% at 20% 0%,#fbf4e3,#efe2c3 60%,#e2cfa6);box-shadow:0 50px 90px -30px #000,0 0 0 1px #c9b083 inset,0 0 0 10px #f5ead1 inset,0 0 0 11px #c9b083 inset}
+.letter::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.25;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.04' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .42 0 0 0 0 .25 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E")}
+.letter h3{font-family:var(--f-display);font-size:clamp(30px,3.4vw,46px);line-height:1.05;color:#1d1430}
+.letter .lede{font-style:italic;font-size:20px;margin:14px 0 30px;max-width:52ch;color:#4a3826}
+.letter .label{color:#8a6420}
+.fields{display:grid;gap:26px;max-width:560px}
+.field{display:grid;gap:6px}
+.field label{font-family:var(--f-label);letter-spacing:.24em;font-size:11px;color:#7a5a20;text-transform:uppercase}
+.field .in{display:flex;align-items:baseline;border-bottom:1px solid #a8916a;transition:border-color .3s}
+.field .in:focus-within{border-color:#1d1430}
+.field .pre{font-family:var(--f-display);font-size:24px;color:#8a6420;padding-right:4px}
+.field input{flex:1;min-width:0;border:0;background:transparent;font-family:var(--f-display);font-style:italic;font-size:26px;padding:6px 0 8px;color:#1d1430;outline:none}
+.field input::placeholder{color:#b8a27c}
+.field .err{font-size:15px;color:#a3101c;min-height:0}
+.letter .actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:36px}
+.letter .fine{font-size:15px;color:#6a5640;max-width:46ch;margin:0}
+.wax{position:absolute;right:clamp(20px,5vw,60px);bottom:clamp(20px,5vw,50px);width:110px;height:110px;pointer-events:none;opacity:0;transform:scale(2.4) rotate(-30deg)}
+.wax.stamp{animation:stamp .9s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes stamp{60%{opacity:1;transform:scale(.92) rotate(-8deg)}to{opacity:1;transform:scale(1) rotate(-10deg)}}
+.panel[hidden]{display:none}
+.notice{margin-top:20px;font-size:16px;color:#4a3826;border-left:2px solid #8a6420;padding:4px 0 4px 14px}
+.code{font-family:var(--f-mono);font-size:22px;letter-spacing:.2em;color:#1d1430;background:#f7ecd2;border:1px dashed #a8916a;padding:6px 12px;display:inline-block;user-select:all}
+.house-door{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin:8px 0 30px}
+@media (max-width:600px){.house-door{grid-template-columns:1fr}}
+.door{width:120px;height:160px;border-radius:60px 60px 4px 4px;background:linear-gradient(180deg,#1d1430,#0b0814);display:grid;place-items:center;box-shadow:0 0 0 3px #c9a24a,0 0 0 8px #1d1430,0 20px 40px -10px rgba(0,0,0,.6)}
+.door svg{width:56px;height:56px}
+.reflink{font-family:var(--f-mono);font-size:15px;color:#6a5640;word-break:break-all}
+
+/* quiz */
+.quiz{display:grid;gap:24px}
+.qbar{height:2px;background:#d9c8a2;position:relative}
+.qbar i{position:absolute;inset:0;background:#8a6420;transform-origin:0 50%;transform:scaleX(0);transition:transform .6s}
+.qcount{font-family:var(--f-label);letter-spacing:.3em;font-size:11px;color:#8a6420}
+.qtext{font-family:var(--f-display);font-size:clamp(26px,3vw,38px);line-height:1.1;color:#1d1430;margin:0}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:600px){.opts{grid-template-columns:1fr}}
+.opt{position:relative;text-align:left;padding:18px 20px 18px 54px;background:#f8efda;border:1px solid #cdb68a;cursor:pointer;font-family:var(--f-body);font-size:19px;line-height:1.3;color:#2c1d10;transition:transform .3s,background .3s,box-shadow .3s}
+.opt::before{content:attr(data-k);position:absolute;left:18px;top:16px;font-family:var(--f-display);font-style:italic;font-size:22px;color:#a3101c}
+.opt:hover{transform:translateY(-2px);background:#fff8e8;box-shadow:0 12px 24px -12px rgba(60,30,0,.45)}
+.opt.pick{background:#1d1430;color:var(--ivory)}
+.reading{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center}
+@media (max-width:700px){.reading{grid-template-columns:1fr;justify-items:center;text-align:center}}
+.tarot{width:220px;aspect-ratio:2/3.3;perspective:1200px}
+.tarot .in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 1.4s cubic-bezier(.3,1.2,.4,1)}
+.tarot.flip .in{transform:rotateY(180deg)}
+.tarot .f{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.tarot .back{background:repeating-linear-gradient(45deg,#6e0d1a 0 6px,#5a0915 6px 12px);display:grid;place-items:center;border:6px solid #1d1430;box-shadow:inset 0 0 0 2px var(--gold),0 30px 60px -20px rgba(0,0,0,.7)}
+.tarot .back svg{width:70%}
+.tarot .front{transform:rotateY(180deg);background:linear-gradient(170deg,#1d1430,#0d0a1c);border:6px solid #0d0a1c;box-shadow:inset 0 0 0 2px var(--gold);color:var(--ivory);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:22px 14px;text-align:center}
+.tarot .front .num{font-family:var(--f-display);font-style:italic;color:var(--gold-hi);font-size:20px}
+.tarot .front svg{width:96px;height:96px;color:var(--gold-hi)}
+.tarot .front .nm{font-family:var(--f-label);letter-spacing:.24em;font-size:13px;color:var(--gold-hi)}
+.arch h4{font-family:var(--f-display);font-size:clamp(40px,5vw,64px);line-height:.95;margin:6px 0 12px;color:#1d1430;font-weight:500}
+.arch .motto2{font-family:var(--f-display);font-style:italic;font-size:22px;color:#a3101c;margin:0 0 16px}
+.arch ul{margin:0 0 22px;padding:0;list-style:none;display:grid;gap:6px}
+.arch li::before{content:"✦  ";color:#8a6420}
+@media (max-width:700px){.arch ul{justify-items:center}}
+
+/* ───────── ATELIER ───────── */
+#atelier{background:radial-gradient(70% 50% at 50% 30%,#1b1022,var(--ink) 70%)}
+.forge{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(30px,5vw,70px);align-items:center}
+@media (max-width:960px){.forge{grid-template-columns:1fr}}
+.cardstage{position:relative;display:grid;place-items:center;padding:40px 0 70px;perspective:1400px;touch-action:pan-y}
+.cardstage::after{content:"";position:absolute;left:12%;right:12%;bottom:22px;height:30px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.85),transparent);filter:blur(6px)}
+.mcard{--rx:0deg;--ry:0deg;--sx:50%;--sy:30%;width:min(540px,100%);aspect-ratio:85.6/53.98;position:relative;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s linear;cursor:pointer;z-index:1}
+.mcard .side{position:absolute;inset:0;border-radius:4.2% / 6.6%;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:var(--m-base);box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 -1px 0 rgba(0,0,0,.4) inset,0 0 0 1px var(--m-edge),0 40px 70px -25px rgba(0,0,0,.9)}
+.mcard .side::before{content:"";position:absolute;inset:0;background:var(--m-tex);mix-blend-mode:var(--m-blend,overlay);opacity:var(--m-texo,.5);pointer-events:none}
+.mcard .side::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:var(--m-specblend,soft-light);
+  background:radial-gradient(circle at var(--sx) var(--sy),rgba(255,255,255,var(--m-spec,.85)),transparent 42%),
+    linear-gradient(calc(110deg + var(--ry) * 2),transparent 30%,rgba(255,255,255,calc(var(--m-spec,.85) * .5)) 46%,transparent 58%)}
+.mcard .back{transform:rotateY(180deg)}
+.mcard.flipped{transform:rotateX(var(--rx)) rotateY(calc(180deg + var(--ry)))}
+.mcard .flipwrap{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.3,1.3,.4,1)}
+.cf{position:absolute;inset:0;padding:6.5% 7%;display:grid;grid-template-rows:auto 1fr auto;z-index:2}
+.eng{color:var(--m-ink);text-shadow:var(--m-emb)}
+.cf .top{display:flex;justify-content:space-between;align-items:flex-start}
+.cf .brand{display:grid;line-height:1}
+.cf .brand b{font-family:var(--f-mark);font-weight:900;font-stretch:125%;font-size:clamp(13px,3.6vw,19px);letter-spacing:.02em}
+.cf .brand i{font-family:var(--f-script);font-style:normal;font-size:clamp(17px,4.4vw,25px);margin-top:-2px}
+.cf .medal{width:15%;aspect-ratio:1;color:var(--m-ink);filter:drop-shadow(0 1px 0 rgba(255,255,255,.3))}
+.cf .mid{display:flex;align-items:center;gap:5%}
+.chip{width:15%;aspect-ratio:1.3;border-radius:16%;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#f6e2a2,#c49a3e 40%,#efd38a 60%,#9c7426);box-shadow:inset 0 0 0 1px rgba(80,55,10,.6),0 1px 1px rgba(0,0,0,.4)}
+.chip::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,transparent 32%,rgba(80,55,10,.55) 32% 34%,transparent 34% 66%,rgba(80,55,10,.55) 66% 68%,transparent 68%),
+  linear-gradient(0deg,transparent 30%,rgba(80,55,10,.55) 30% 32%,transparent 32% 49%,rgba(80,55,10,.55) 49% 51%,transparent 51% 68%,rgba(80,55,10,.55) 68% 70%,transparent 70%)}
+.nfc{width:6%;color:var(--m-ink);opacity:.8}
+.cf .num{font-family:var(--f-mono);font-size:clamp(12px,3.4vw,19px);letter-spacing:.14em;margin-bottom:3%}
+.cf .bot{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.cf .nm{font-family:var(--f-mono);font-size:clamp(13px,3.6vw,20px);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.cf .meta{display:grid;gap:2px;font-family:var(--f-label);font-size:clamp(6px,1.6vw,9px);letter-spacing:.2em;text-transform:uppercase;min-width:0}
+.cf .tier{text-align:right;font-family:var(--f-label);font-size:clamp(7px,1.8vw,10px);letter-spacing:.24em;text-transform:uppercase;line-height:1.5;flex-shrink:0}
+.proof{position:absolute;top:8%;right:22%;font-family:var(--f-label);font-size:clamp(6px,1.5vw,8px);letter-spacing:.3em;border:1px solid currentColor;padding:2px 6px;z-index:3}
+.cb{position:absolute;inset:0;z-index:2;display:grid;grid-template-rows:auto auto 1fr auto}
+.stripe{height:19%;margin-top:7%;background:linear-gradient(180deg,#0b0b0d,#1d1d22 50%,#0b0b0d)}
+.sig{margin:6% 7% 0;display:grid;grid-template-columns:1fr auto;gap:4%;align-items:center}
+.sig .pad{height:clamp(26px,7vw,40px);background:repeating-linear-gradient(-30deg,#efe8d8 0 4px,#e2d7bf 4px 8px);display:flex;align-items:center;padding:0 8px;color:#1d1430;font-family:var(--f-script);font-size:clamp(16px,4.6vw,26px);overflow:hidden;white-space:nowrap}
+.holo{width:clamp(30px,9vw,50px);aspect-ratio:1;border-radius:6px;background:conic-gradient(from calc(var(--ry) * 8),#f5c6ff,#a9f0ff,#fff6b0,#ffb3c7,#b9b0ff,#f5c6ff);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);opacity:.85}
+.cb .small{padding:4% 7%;font-family:var(--f-label);font-size:clamp(6px,1.5vw,8px);letter-spacing:.14em;line-height:1.7;text-transform:uppercase}
+.cb .foot{padding:0 7% 6%;display:flex;justify-content:space-between;align-items:end}
+.cb .foot i{font-family:var(--f-script);font-style:normal;font-size:clamp(16px,4vw,24px)}
+.cardhint{position:absolute;bottom:0;font-family:var(--f-label);letter-spacing:.3em;font-size:10px;color:var(--ivory-dim)}
+
+.ctrl{display:grid;gap:30px}
+.ctrl .field label{color:var(--gold)}
+.ctrl .field .in{border-color:var(--line)}
+.ctrl .field .in:focus-within{border-color:var(--gold-hi)}
+.ctrl .field input{color:var(--ivory);font-style:normal;font-family:var(--f-mono);letter-spacing:.14em;text-transform:uppercase;font-size:22px}
+.ctrl .field input::placeholder{color:#6d6152}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:12px}
+.sw{display:grid;justify-items:center;gap:8px;background:none;border:0;cursor:pointer;padding:0;color:var(--ivory-dim)}
+.sw i{width:100%;aspect-ratio:1.586;border-radius:5px;background:var(--m-base);box-shadow:0 0 0 1px var(--m-edge),0 8px 18px -8px #000;position:relative;overflow:hidden;transition:transform .3s}
+.sw i::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5) 48%,transparent 60%);mix-blend-mode:soft-light}
+.sw span{font-family:var(--f-label);font-size:9px;letter-spacing:.16em;text-transform:uppercase;text-align:center;line-height:1.3}
+.sw:hover i{transform:translateY(-3px)}
+.sw[aria-pressed="true"] i{box-shadow:0 0 0 2px var(--ink),0 0 0 3px var(--gold-hi),0 8px 18px -8px #000}
+.sw[aria-pressed="true"] span{color:var(--gold-hi)}
+.sw.locked{cursor:not-allowed;opacity:.5}
+.sw.locked i{background:repeating-linear-gradient(45deg,#1a1418 0 6px,#120d11 6px 12px)!important}
+.stylenote{font-style:italic;color:var(--ivory);margin:0;min-height:1.6em}
+.ctrl .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.ctrl .fine{font-size:16px;margin:0;color:var(--ivory-dim)}
+
+/* metals */
+.m-obsidian{--m-base:linear-gradient(135deg,#1b1b1f,#050506 45%,#1e1e24 70%,#09090b);--m-edge:#3a3a40;--m-ink:#8d7a4c;--m-emb:0 -1px 0 rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.12);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);--m-spec:.35}
+.m-gold{--m-base:linear-gradient(125deg,#8a6520,#f3d68a 22%,#b98d36 40%,#fbe7a8 55%,#a07628 75%,#e7c574);--m-edge:#7a5718;--m-ink:#6b4a12;--m-emb:0 1px 0 rgba(255,245,210,.7),0 -1px 0 rgba(70,45,5,.55);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 1px,rgba(0,0,0,.06) 1px 2px,transparent 2px 4px);--m-spec:.9}
+.m-platinum{--m-base:linear-gradient(125deg,#9ea3a8,#eef0f2 25%,#b5b9be 45%,#f8f9fa 58%,#a4a9ae 78%,#dfe2e5);--m-edge:#80858a;--m-ink:#4c5156;--m-emb:0 1px 0 rgba(255,255,255,.8),0 -1px 0 rgba(30,35,40,.45);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.25) 0 1px,rgba(0,0,0,.05) 1px 2px,transparent 2px 4px);--m-spec:.9}
+.m-rose{--m-base:linear-gradient(125deg,#9c5a4a,#f1c3b0 24%,#c0806b 44%,#fbdccd 58%,#a8634f 78%,#e7b19c);--m-edge:#844a3c;--m-ink:#6a3226;--m-emb:0 1px 0 rgba(255,235,225,.7),0 -1px 0 rgba(70,25,15,.5);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 1px,transparent 1px 3px);--m-spec:.85}
+.m-titanium{--m-base:radial-gradient(circle at 30% 40%,#7d8288,#4a4e53 60%,#33363a);--m-edge:#2b2e31;--m-ink:#c9ccd0;--m-emb:0 -1px 0 rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.25);--m-tex:repeating-radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0 1px,transparent 1px 3px);--m-spec:.6}
+.m-crimson{--m-base:radial-gradient(120% 120% at 30% 20%,#b01a2c,#6a0a17 50%,#2b030a);--m-edge:#3a050e;--m-ink:#e8c477;--m-emb:0 1px 0 rgba(0,0,0,.6),0 0 6px rgba(255,210,120,.25);--m-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23v)'/%3E%3C/svg%3E");--m-texo:.35;--m-spec:.5;--m-specblend:overlay}
+.m-navy{--m-base:linear-gradient(135deg,#252a5e,#121535 50%,#1f2350);--m-edge:#0b0d22;--m-ink:#d9b866;--m-emb:0 -1px 0 rgba(0,0,0,.7),0 1px 0 rgba(255,230,160,.25);--m-tex:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px);--m-spec:.45}
+.m-pearl{--m-base:linear-gradient(125deg,#e9e4ef,#f8f1e8 20%,#dfe8f2 40%,#f4e1ec 60%,#e3f0ea 80%,#efe7f6);--m-edge:#bdb5c4;--m-ink:#5a4f66;--m-emb:0 1px 0 rgba(255,255,255,.9),0 -1px 0 rgba(60,50,70,.35);--m-tex:conic-gradient(from 90deg at 30% 60%,#ffd6f0,#d6f3ff,#fff3c9,#e2d6ff,#ffd6f0);--m-texo:.35;--m-spec:.9}
+.m-genesis{--m-base:linear-gradient(135deg,#120c06,#050403 50%,#1a1006);--m-edge:#f7931a;--m-ink:#f7931a;--m-emb:0 0 8px rgba(247,147,26,.45),0 -1px 0 rgba(0,0,0,.9);--m-tex:repeating-linear-gradient(0deg,rgba(247,147,26,.06) 0 1px,transparent 1px 7px),repeating-linear-gradient(90deg,rgba(247,147,26,.06) 0 1px,transparent 1px 7px);--m-texo:1;--m-blend:normal;--m-spec:.35}
+.m-vault{--m-base:radial-gradient(140% 100% at 70% 20%,#151012,#050304 60%);--m-edge:#c9a24a;--m-ink:#f4dc98;--m-emb:0 0 1px #000,0 1px 0 rgba(0,0,0,.8);--m-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='190'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='turbulence' baseFrequency='.012 .03' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .78 0 0 0 0 .38 0 0 0 -9 2.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E") 0 0/100% 100%;--m-texo:.9;--m-blend:screen;--m-spec:.5}
+
+/* registry (owner) */
+.ledger{overflow-x:auto;border:1px solid var(--line)}
+.ledger table{width:100%;border-collapse:collapse;min-width:860px;font-size:16px}
+.ledger th{font-family:var(--f-label);letter-spacing:.2em;font-size:10px;font-weight:400;color:var(--gold);text-align:left;padding:14px;border-bottom:1px solid var(--line)}
+.ledger td{padding:14px;border-bottom:1px solid rgba(201,162,74,.12);color:var(--ivory);vertical-align:top}
+.ledger td.s{font-family:var(--f-label);font-size:11px;letter-spacing:.16em}
+.ledger .acts{display:flex;gap:8px}
+.ledger .empty{padding:40px;text-align:center;font-style:italic}
+
+/* footer */
+footer{position:relative;padding-block:120px 60px;text-align:center;background:linear-gradient(180deg,var(--ink),#120509)}
+.rope{position:relative;height:120px;max-width:900px;margin:0 auto 60px}
+.rope svg{width:100%;height:100%}
+.foot-grid{display:grid;gap:30px;justify-items:center}
+.foot-grid .big{font-family:var(--f-script);font-size:clamp(54px,8vw,110px);color:var(--crimson);line-height:.9}
+.dicebox{display:flex;gap:18px;align-items:center;justify-content:center}
+.die{width:54px;height:54px;border-radius:10px;border:0;cursor:pointer;background:linear-gradient(145deg,#fbf7ee,#d9d0bd);box-shadow:inset 0 -3px 6px rgba(0,0,0,.25),0 10px 20px -8px #000;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:8px;gap:2px}
+.die b{border-radius:50%;background:#1d1430;opacity:0;transform:scale(.8)}
+.die b.on{opacity:1}
+.die.roll{animation:roll .7s cubic-bezier(.3,1.4,.5,1)}
+@keyframes roll{30%{transform:rotate(200deg) translateY(-30px)}100%{transform:rotate(360deg)}}
+.dsum{font-family:var(--f-label);letter-spacing:.3em;font-size:11px;color:var(--gold);min-width:9ch}
+.fine-print{max-width:62ch;font-size:15px;color:#857a68;margin:0}
+.fine-print a{color:var(--gold)}
+#chips{position:fixed;inset:0;z-index:105;pointer-events:none;width:100%;height:100%}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  #theatre{height:auto}#theatre .pin{position:relative;height:auto;min-height:100vh}
+  .curtain,.curtain-call,.valance,.tassel{display:none}
+  #creed,#house{height:auto}#creed .pin,#house .pin{position:relative;height:auto;padding-block:100px}
+  .creed-text .w{opacity:1}
+  .track{flex-wrap:wrap;padding-right:var(--gutter-r)}
+}
+</style>
+
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><i></i><b></b></div>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+<canvas id="chips" aria-hidden="true"></canvas>
+<div class="lightsout" id="lightsout" aria-hidden="true"></div>
+<div class="whisper" id="whisper" aria-hidden="true"><p>The best members never ask how many secrets there are.</p></div>
+<div class="toast" id="toast" role="status" aria-live="polite"><div class="t" id="toastT">A secret</div><div class="m" id="toastM"></div></div>
+
+<header class="nav">
+  <a class="mono" href="#theatre" aria-label="Toshi.bet Social Club, back to top">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="#c9a24a"/><circle cx="20" cy="20" r="15" fill="#b81e28"/><path d="M12 13h16v4h-6v12h-4V17h-6z" fill="#efe5cf"/></svg>
+    <span>Toshi.bet&nbsp;Social&nbsp;Club</span>
+  </a>
+  <div class="nav-r">
+    <span class="secrets" id="secretsPill" title="There are secrets in this house.">SECRETS <span class="n" id="secretsN">0</span>/7</span>
+    <a class="btn sm" href="#initiation">Petition</a>
+  </div>
+</header>
+
+<main>
+<!-- ═════════ ACT 0 · THE CURTAIN ═════════ -->
+<section id="theatre" aria-label="Opening">
+  <div class="pin" id="theatrePin">
+    <div class="stage" id="stage" style="--lit:.15">
+      <div class="beam b2"></div><div class="beam b3"></div><div class="beam b1"></div>
+      <div class="floor"></div>
+      <div class="pool"></div>
+      <div class="foots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <canvas id="dust"></canvas>
+      <div class="show">
+        <div class="show-inner" id="showInner">
+          <div class="eyebrow"><span>Good players</span><span class="star">✦</span><span>Better people</span></div>
+          <h1 class="wordmark" id="wordmark" aria-label="Toshi.bet"><span>T</span><span>O</span><span>S</span><span>H</span><span>I</span><span>.</span><span>B</span><span>E</span><span>T</span></h1>
+          <div class="script">Social Club</div>
+          <div class="crest-row">
+            <div class="motto">Same<br>game<br>higher<br>standards</div>
+            <div class="crest" id="crest">
+              <img src="/crest.webp" alt="The Toshi crest: the mascot in a kabuto helmet and sunglasses, flanked by chips and dice above an Internet Citizens ribbon">
+              <button class="ember" id="ember" aria-label="The cigar"></button>
+            </div>
+            <div class="motto">Discipline<br>fuels<br>freedom</div>
+          </div>
+          <div class="est">EST. 2024</div>
+        </div>
+      </div>
+      <button class="tassel" id="tassel" aria-label="Pull the curtain cord"></button>
+    </div>
+    <div class="curtain l" id="curL"><div class="sway"><canvas></canvas><div class="seam"></div><div class="fringe"></div></div></div>
+    <div class="curtain r" id="curR"><div class="sway"><canvas></canvas><div class="seam"></div><div class="fringe"></div></div></div>
+    <div class="valance" id="valance"><div class="v-cloth"></div><div class="braid"></div><div class="rod"></div></div>
+    <div class="curtain-call" id="curtainCall">
+      <div class="cc-inner">
+        <div class="cc-text">Members &amp; petitioners only</div>
+        <button class="seal" id="seal" aria-label="The club seal. Press and hold.">
+          <span class="ring"></span>
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <radialGradient id="sg" cx="40%" cy="35%"><stop offset="0" stop-color="#fbe7a8"/><stop offset=".55" stop-color="#c9a24a"/><stop offset="1" stop-color="#6f5019"/></radialGradient>
+              <path id="arc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/>
+            </defs>
+            <circle cx="100" cy="100" r="96" fill="url(#sg)"/>
+            <circle cx="100" cy="100" r="88" fill="none" stroke="#5a3f10" stroke-width="1.5"/>
+            <circle cx="100" cy="100" r="56" fill="#7c0f1d" stroke="#5a3f10" stroke-width="2"/>
+            <text font-family="Marcellus SC, Georgia, serif" font-size="13" letter-spacing="5" fill="#4a3208"><textPath href="#arc" startOffset="0">TOSHI.BET ✦ SOCIAL CLUB ✦ INTERNET CITIZENS ✦</textPath></text>
+            <path d="M74 76h52v14h-19v40h-14V90H74z" fill="url(#sg)" stroke="#4a3208" stroke-width="1.5"/>
+          </svg>
+        </button>
+        <div class="cc-sub">Scroll to raise the curtain</div>
+        <div class="scrollcue"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ ACT I · THE CREED ═════════ -->
+<section id="creed" aria-label="The creed">
+  <div class="pin">
+    <div class="creed-box">
+      <span class="label">The creed</span>
+      <p class="creed-text" id="creedText">We are internet citizens. We play the same game as everyone else and hold ourselves to a higher standard. We keep our word, our bankroll and our composure. <em>Discipline fuels freedom.</em> Good players. <em>Better people.</em></p>
+      <div class="creed-sig"><span class="s">The Committee</span><span class="label">Toshi.bet Social Club</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="row" id="marq"></div></div>
+
+<!-- ═════════ ACT II · THE HOUSE ═════════ -->
+<section id="house" aria-label="The house">
+  <div class="pin">
+    <div class="house-head">
+      <h2>The <i>House</i></h2>
+      <p>The club meets at Toshi.bet, a crypto-native casino built for players who want fast money and fair math.</p>
+    </div>
+    <div class="track" id="track">
+      <article class="plaque">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="32" cy="32" r="27"/><circle cx="32" cy="32" r="18"/><path d="M32 5v9M32 50v9M5 32h9M50 32h9M13 13l6 6M45 45l6 6M51 13l-6 6M19 45l-6 6"/><path d="M28 24h7a4 4 0 010 8h-7zm0 8h8a4 4 0 010 8h-8zM28 22v20M31 20v4M31 40v4"/></svg>
+        <div><span class="k">BTC · ETH · USDT · SOL · DOGE</span><h3>Crypto, end to end</h3></div>
+        <p>Deposit and play in the coins you already hold. No bank in the middle, no waiting on business days.</p>
+      </article>
+      <article class="plaque">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M36 4L14 36h16l-4 24 24-34H34z"/><circle cx="32" cy="32" r="30" stroke-dasharray="2 5"/></svg>
+        <div><span class="k">WITHDRAWALS · INSTANT</span><h3>Your winnings move when you do</h3></div>
+        <p>Cash out in minutes, straight to your own wallet. A member never waits to be paid.</p>
+      </article>
+      <article class="plaque">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M32 8v48M14 56h36M10 20h44M32 12l-22 8 22-8 22 8"/><path d="M10 20l-7 16a8 8 0 0014 0zM54 20l-7 16a8 8 0 0014 0z"/></svg>
+        <div><span class="k">SERVER SEED · CLIENT SEED · NONCE</span><h3>Provably fair</h3></div>
+        <p>Every roll can be checked against its seeds. Trust the house because you can verify it.</p>
+      </article>
+      <article class="plaque">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 16c10 4 46 4 56 0M8 24h48M14 16v44M50 16v44M14 34h36"/><rect x="26" y="40" width="12" height="20"/></svg>
+        <div><span class="k">DICE · CRASH · PLINKO · MINES</span><h3>Toshi's Dojo</h3></div>
+        <p>House originals alongside slots and live tables from the studios you know.</p>
+      </article>
+      <article class="plaque">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 20h52v8a5 5 0 000 10v8H6v-8a5 5 0 000-10z"/><path d="M40 20v26" stroke-dasharray="3 3"/><path d="M18 33h12M18 38h8"/></svg>
+        <div><span class="k">RAKEBACK · RAFFLES · REWARDS</span><h3>Play is rewarded</h3></div>
+        <p>Rewards grow with your play, and the weekly raffle keeps the room lively.</p>
+      </article>
+      <article class="plaque end"><h3>Now, the rite.</h3><p>Four steps stand between you and a seat at the table.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ ACT III · THE INITIATION ═════════ -->
+<section id="initiation" class="act" aria-label="The initiation">
+  <div class="wrap">
+    <div class="act-head">
+      <span class="label">Act III</span>
+      <h2>The <i>Initiation</i></h2>
+      <p>Membership is by petition. Tell us who you are, take your seat at Toshi.bet, sit for your reading, and the committee will review your name.</p>
+    </div>
+    <div class="rite">
+      <div>
+        <ol class="steps" id="steps">
+          <li data-s="1" class="cur"><span class="rn">I</span><span class="nm">Petition</span></li>
+          <li data-s="2"><span class="rn">II</span><span class="nm">Enter the house</span></li>
+          <li data-s="3"><span class="rn">III</span><span class="nm">The reading</span></li>
+          <li data-s="4"><span class="rn">IV</span><span class="nm">The card</span></li>
+        </ol>
+        <div class="status-pill" id="statusPill">STATUS · NOT YET FILED</div>
+      </div>
+
+      <div class="letter">
+        <!-- I -->
+        <form class="panel" id="p1" novalidate>
+          <span class="label">I · The petition</span>
+          <h3>To the Committee of the Toshi.bet Social Club,</h3>
+          <p class="lede">I request the honour of a seat. My particulars are set down below, in my own hand.</p>
+          <div class="fields">
+            <div class="field"><label for="fName">Full name</label><div class="in"><input id="fName" name="name" autocomplete="name" placeholder="Satoshi Hayashi" maxlength="40" required></div><div class="err" id="eName"></div></div>
+            <div class="field"><label for="fEmail">Email</label><div class="in"><input id="fEmail" name="email" type="email" autocomplete="email" placeholder="you@domain.com" maxlength="80" required></div><div class="err" id="eEmail"></div></div>
+            <div class="field"><label for="fX">X account</label><div class="in"><span class="pre">@</span><input id="fX" name="x" autocomplete="off" placeholder="username" maxlength="16" required></div><div class="err" id="eX"></div></div>
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">Seal my petition</button>
+            <p class="fine">Your details go only to the committee. 18+ only.</p>
+          </div>
+          <svg class="wax" id="wax" viewBox="0 0 120 120" aria-hidden="true"><defs><radialGradient id="wx" cx="40%" cy="35%"><stop offset="0" stop-color="#d4303a"/><stop offset=".7" stop-color="#8e0f19"/><stop offset="1" stop-color="#5a060d"/></radialGradient></defs><path d="M60 4c8 3 12-2 20 3s6 10 13 15 13 4 15 13-4 12-1 20 9 12 4 20-11 6-15 13-3 13-12 16-12-3-20 0-12 9-20 5-5-11-12-15-14-2-17-11 4-13 2-21-9-11-4-19 11-6 15-13 2-13 11-17 12 3 21-2z" fill="url(#wx)"/><circle cx="60" cy="60" r="34" fill="none" stroke="#5a060d" stroke-width="2"/><path d="M44 46h32v9H65v24h-10V55H44z" fill="#5a060d" opacity=".75"/></svg>
+        </form>
+
+        <!-- II -->
+        <form class="panel" id="p2" hidden novalidate>
+          <span class="label">II · Enter the house</span>
+          <h3>Take your seat at Toshi.bet.</h3>
+          <p class="lede">Members play under the club's introduction. Open the house through the club door, sign in or create your account, then return here.</p>
+          <div class="house-door">
+            <div class="door"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="#b81e28" stroke="#c9a24a"/><path d="M12 13h16v4h-6v12h-4V17h-6z" fill="#efe5cf"/></svg></div>
+            <div style="display:grid;gap:12px;justify-items:start">
+              <a class="btn" id="houseLink" href="https://toshi.bet/r/mariannehere" target="_blank" rel="noopener">Sign in to Toshi.bet ↗</a>
+              <span class="reflink">toshi.bet/r/mariannehere</span>
+            </div>
+          </div>
+          <div class="fields">
+            <div class="field"><label for="fToshi">Your Toshi.bet username</label><div class="in"><input id="fToshi" autocomplete="off" placeholder="as it appears on your profile" maxlength="32"></div><div class="err" id="eToshi"></div></div>
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">I'm signed in</button>
+            <p class="fine">The committee checks that you joined through the club door.</p>
+          </div>
+        </form>
+
+        <!-- III -->
+        <div class="panel" id="p3" hidden>
+          <div class="quiz" id="quiz">
+            <span class="label">III · The reading</span>
+            <div class="qbar"><i id="qbar"></i></div>
+            <span class="qcount" id="qcount">QUESTION 1 OF 6</span>
+            <p class="qtext" id="qtext"></p>
+            <div class="opts" id="opts"></div>
+          </div>
+          <div class="reading" id="reading" hidden>
+            <div class="tarot" id="tarot"><div class="in">
+              <div class="f back"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#c9a24a"/><circle cx="50" cy="50" r="30" fill="#2a040b" stroke="#c9a24a"/><path d="M36 38h28v8H54v22h-8V46H36z" fill="#c9a24a"/></svg></div>
+              <div class="f front"><span class="num" id="tNum">VII</span><span id="tGlyph"></span><span class="nm" id="tName">THE SHOGUN</span></div>
+            </div></div>
+            <div class="arch">
+              <span class="label">Your temperament</span>
+              <h4 id="aName">The Shogun</h4>
+              <p class="motto2" id="aMotto"></p>
+              <ul id="aTraits"></ul>
+              <div class="row" style="display:flex;gap:14px;flex-wrap:wrap">
+                <a class="btn" href="#atelier" id="toForge">Strike my card</a>
+                <button class="btn ghost" type="button" id="retake">Sit again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IV -->
+        <div class="panel" id="p4" hidden>
+          <span class="label">IV · The card</span>
+          <h3>Your petition rests with the committee.</h3>
+          <p class="lede" id="p4lede">Design the card you'll carry. Approved members receive it struck in metal, with the name you engrave below.</p>
+          <div class="actions"><a class="btn" href="#atelier">Go to the atelier</a></div>
+          <div class="notice" id="localNote" hidden></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ ACT IV · THE ATELIER ═════════ -->
+<section id="atelier" class="act" aria-label="The card atelier">
+  <div class="wrap">
+    <div class="act-head">
+      <span class="label">Act IV</span>
+      <h2>The <i>Atelier</i></h2>
+      <p>Every approved member receives a metal card, engraved by hand with their name. Choose your metal. Tilt it to the light. Tap it to see the back.</p>
+    </div>
+    <div class="forge">
+      <div class="cardstage" id="cardstage">
+        <div class="mcard m-obsidian" id="mcard" role="button" tabindex="0" aria-label="Your member card. Press to flip.">
+          <div class="flipwrap" id="flipwrap">
+            <div class="side front">
+              <span class="proof eng" id="proof">PROOF</span>
+              <div class="cf">
+                <div class="top">
+                  <div class="brand eng"><b>TOSHI.BET</b><i>Social Club</i></div>
+                  <svg class="medal" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="20" r="14.5" fill="none" stroke="currentColor" stroke-width=".6"/><path d="M12 13h16v4h-6v12h-4V17h-6z" fill="currentColor"/></svg>
+                </div>
+                <div class="mid"><span class="chip"></span><svg class="nfc" viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8a6 6 0 010 8M8 5a10 10 0 010 14M12 2a14 14 0 010 20"/></svg></div>
+                <div>
+                  <div class="num eng" id="cNum">TSC 2024 0000 0000</div>
+                  <div class="bot">
+                    <div style="min-width:0;display:grid;gap:4px">
+                      <div class="nm eng" id="cName">Your Name</div>
+                      <div class="meta eng"><span id="cSince">MEMBER SINCE 10/26</span></div>
+                    </div>
+                    <div class="tier eng" id="cTier">INTERNET<br>CITIZEN</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="side back">
+              <div class="cb">
+                <div class="stripe"></div>
+                <div class="sig"><div class="pad" id="cSig">Your Name</div><div class="holo"></div></div>
+                <div class="small eng">This card remains the property of the Toshi.bet Social Club. If found, return it to its rightful citizen. Same game. Higher standards.</div>
+                <div class="foot eng"><i>Good players, better people</i><span class="meta" style="font-family:var(--f-label);font-size:8px;letter-spacing:.2em">EST. 2024</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="cardhint">DRAG TO TILT · TAP TO FLIP</span>
+      </div>
+
+      <div class="ctrl">
+        <div class="field"><label for="cardName">Engraving</label><div class="in"><input id="cardName" maxlength="22" placeholder="YOUR NAME" autocomplete="off"></div></div>
+        <div style="display:grid;gap:14px">
+          <span class="label">Metal</span>
+          <div class="swatches" id="swatches"></div>
+          <p class="stylenote" id="styleNote"></p>
+        </div>
+        <div class="row">
+          <button class="btn" id="reserve" type="button">Reserve this card</button>
+          <span class="label" id="reserveState"></span>
+        </div>
+        <p class="fine" id="atelierFine">Cards are struck for approved members only. What you see here is a proof.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ THE REGISTRY (owner only) ═════════ -->
+<section id="registry" class="act" hidden aria-label="The registry">
+  <div class="wrap">
+    <div class="act-head">
+      <span class="label">Committee eyes only</span>
+      <h2>The <i>Registry</i></h2>
+      <p>Petitions filed through this page. Approving a petitioner unlocks their card as approved.</p>
+    </div>
+    <div class="ledger"><table>
+      <thead><tr><th>Petitioner</th><th>Email</th><th>X</th><th>Toshi.bet</th><th>Temperament</th><th>Card</th><th>Filed</th><th>Status</th><th></th></tr></thead>
+      <tbody id="ledgerBody"><tr><td colspan="9" class="empty">No petitions yet. They appear here the moment someone seals one.</td></tr></tbody>
+    </table></div>
+  </div>
+</section>
+
+<footer>
+  <div class="rope" aria-hidden="true">
+    <svg viewBox="0 0 900 120" preserveAspectRatio="none"><defs><linearGradient id="rp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4303a"/><stop offset=".5" stop-color="#7c0f1d"/><stop offset="1" stop-color="#3a050e"/></linearGradient><linearGradient id="post" x1="0" x2="1"><stop offset="0" stop-color="#6f5019"/><stop offset=".4" stop-color="#f4dc98"/><stop offset="1" stop-color="#6f5019"/></linearGradient></defs>
+      <path d="M40 30 Q450 140 860 30" fill="none" stroke="url(#rp)" stroke-width="14" stroke-linecap="round"/>
+      <path d="M40 30 Q450 140 860 30" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2" stroke-dasharray="6 8" transform="translate(0,-3)"/>
+      <rect x="28" y="20" width="24" height="100" rx="3" fill="url(#post)"/><circle cx="40" cy="18" r="14" fill="url(#post)"/>
+      <rect x="848" y="20" width="24" height="100" rx="3" fill="url(#post)"/><circle cx="860" cy="18" r="14" fill="url(#post)"/></svg>
+  </div>
+  <div class="wrap foot-grid">
+    <div class="big">Internet Citizens</div>
+    <div class="dicebox">
+      <button class="die" id="d1" aria-label="Roll the dice"></button>
+      <button class="die" id="d2" aria-label="Roll the dice"></button>
+      <span class="dsum" id="dsum">ROLL</span>
+    </div>
+    <span class="label">Est. 2024 · Seven secrets in this house</span>
+    <p class="fine-print">The Toshi.bet Social Club is a community of players on <a href="https://toshi.bet/r/mariannehere" target="_blank" rel="noopener">Toshi.bet</a>. Gambling carries real financial risk. 18+ only, and only where online gambling is legal for you. Set limits and keep them. Discipline fuels freedom.</p>
+  </div>
+</footer>
+</main>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const easeOut = t => 1 - Math.pow(1 - t, 3);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
+
+/* ── toast + secrets ───────────────────────────── */
+const toastEl = $('#toast'); let toastT;
+function toast(msg, title = 'A secret') {
+  $('#toastT').textContent = title; $('#toastM').textContent = msg;
+  toastEl.classList.add('on'); clearTimeout(toastT);
+  toastT = setTimeout(() => toastEl.classList.remove('on'), 4200);
+}
+const SECRETS = ['seal', 'cigar', 'encore', 'toshi', 'konami', 'seven', 'genesis'];
+let found = new Set(store.get('tsc-secrets', []).filter(s => SECRETS.includes(s)));
+function renderSecrets() { $('#secretsN').textContent = found.size; }
+function unlock(id, msg) {
+  if (found.has(id)) { toast(msg, 'Found before'); return; }
+  found.add(id); store.set('tsc-secrets', [...found]); renderSecrets();
+  toast(msg, `Secret ${found.size} of 7`);
+  if (found.size === 7) setTimeout(() => { toast('All seven found. The Vault finish is yours in the atelier.', 'The Vault'); renderSwatches(); }, 4600);
+}
+renderSecrets();
+$('#secretsPill').addEventListener('click', () => toast(found.size ? `${found.size} found. Keep looking. Curtains, cigars, codes and dice.` : 'Nothing is hidden here. Certainly not seven things.', 'Secrets'));
+
+/* ── smooth scroll ──────────────────────────────── */
+let lenis = null;
+if (!reduced && window.Lenis) {
+  try { lenis = new Lenis({ lerp: .085, wheelMultiplier: .9, smoothWheel: true }); } catch { lenis = null; }
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const t = document.querySelector(a.getAttribute('href')); if (!t) return;
+  e.preventDefault();
+  if (lenis) lenis.scrollTo(t, { duration: 2.2 }); else t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+});
+
+/* ── velvet ─────────────────────────────────────── */
+function drawVelvet(cv, seed) {
+  const r = cv.getBoundingClientRect();
+  const W = Math.max(200, Math.min(720, Math.round(r.width * .9))), H = Math.max(300, Math.min(900, Math.round(r.height * .9)));
+  cv.width = W; cv.height = H;
+  const ctx = cv.getContext('2d'); const img = ctx.createImageData(W, H); const d = img.data;
+  const folds = Math.max(5, Math.round(r.width / 80));
+  const k1 = folds * Math.PI * 2 / W, s1 = seed, s2 = seed * 1.7 + 1.3, s3 = seed * .6 + .5;
+  let rnd = seed * 9301 + 49297;
+  const rand = () => ((rnd = (rnd * 9301 + 49297) % 233280) / 233280);
+  const lo = [26, 2, 6], mid = [112, 10, 24], hi = [196, 52, 64], sheen = [236, 120, 128];
+  for (let y = 0; y < H; y++) {
+    const t = y / H;
+    const sq = 1 + .55 * Math.pow(1 - t, 2.2);
+    const top = .45 + .55 * clamp(t / .16);
+    const warm = clamp((t - .78) / .22);
+    for (let x = 0; x < W; x++) {
+      const p = x * k1 * sq;
+      const a1 = p + s1, a2 = p * 1.73 + s2, a3 = p * 3.1 + s3;
+      const f = Math.sin(a1) + .45 * Math.sin(a2) + .18 * Math.sin(a3);
+      const df = Math.cos(a1) + .45 * 1.73 * Math.cos(a2) + .18 * 3.1 * Math.cos(a3);
+      const s = clamp(df / 2.3, -1, 1);
+      let b = .32 + .28 * (f + 1.63) / 3.26 - .22 * s;
+      const sh = Math.pow(Math.abs(s), 2.4) * .55;
+      b = clamp(b * top);
+      let c0, c1, u;
+      if (b < .5) { c0 = lo; c1 = mid; u = b / .5; } else { c0 = mid; c1 = hi; u = (b - .5) / .5; }
+      const n = (rand() - .5) * 14;
+      const i = (y * W + x) * 4;
+      for (let ch = 0; ch < 3; ch++) {
+        let v = c0[ch] + (c1[ch] - c0[ch]) * u;
+        v = v + (sheen[ch] - v) * sh * top;
+        v += warm * [38, 14, 4][ch] * (.5 + .5 * (f + 1.6) / 3.2);
+        d[i + ch] = v + n;
+      }
+      d[i + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+}
+const curL = $('#curL'), curR = $('#curR');
+function paintCurtains() { drawVelvet($('canvas', curL), 1.1); drawVelvet($('canvas', curR), 3.7); }
+paintCurtains();
+let rsT; addEventListener('resize', () => { clearTimeout(rsT); rsT = setTimeout(() => { paintCurtains(); sizeDust(); measure(); }, 250); });
+
+/* ── dust in the light ──────────────────────────── */
+const dust = $('#dust'), dctx = dust.getContext('2d'); let motes = [];
+function sizeDust() {
+  const r = dust.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
+  dust.width = r.width * dpr; dust.height = r.height * dpr; dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  motes = Array.from({ length: Math.round(r.width / 9) }, () => ({ x: Math.random() * r.width, y: Math.random() * r.height, r: Math.random() * 1.6 + .3, vx: (Math.random() - .5) * .15, vy: -Math.random() * .2 - .03, ph: Math.random() * 6 }));
+}
+sizeDust();
+let lit = .15;
+function drawDust(t) {
+  const W = dust.clientWidth, H = dust.clientHeight; dctx.clearRect(0, 0, W, H);
+  for (const m of motes) {
+    m.x += m.vx + Math.sin(t / 2000 + m.ph) * .08; m.y += m.vy;
+    if (m.y < -5) { m.y = H + 5; m.x = Math.random() * W; }
+    const dx = Math.abs(m.x - W / 2) / (W * .28 + (H - m.y) * 0);
+    const inCone = clamp(1 - dx * (1.2 - m.y / H * .5));
+    const a = (.08 + inCone * .7) * lit * (.6 + .4 * Math.sin(t / 700 + m.ph));
+    if (a < .01) continue;
+    dctx.fillStyle = `rgba(255,232,190,${a})`; dctx.beginPath(); dctx.arc(m.x, m.y, m.r, 0, 7); dctx.fill();
+  }
+}
+
+/* ── scroll scenes ──────────────────────────────── */
+const theatre = $('#theatre'), stage = $('#stage'), valance = $('#valance'), call = $('#curtainCall'), showInner = $('#showInner');
+const letters = $$('#wordmark span');
+const creed = $('#creed'), house = $('#house'), track = $('#track');
+const prog = $('#prog');
+let vh = innerHeight, trackSpan = 0;
+function measure() { vh = innerHeight; trackSpan = Math.max(0, track.scrollWidth - innerWidth + 40); }
+measure();
+function secP(el) { const r = el.getBoundingClientRect(); return clamp(-r.top / (r.height - vh)); }
+
+// creed: split words
+const creedText = $('#creedText');
+(function split(node) {
+  [...node.childNodes].forEach(n => {
+    if (n.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(w => {
+        if (!w) return;
+        if (/^\s+$/.test(w)) frag.appendChild(document.createTextNode(w));
+        else { const s = document.createElement('span'); s.className = 'w'; s.textContent = w; frag.appendChild(s); }
+      });
+      n.replaceWith(frag);
+    } else if (n.nodeType === 1) split(n);
+  });
+})(creedText);
+const words = $$('.w', creedText);
+
+// marquee
+const marq = $('#marq');
+const mItems = ['Internet citizens', '✦', 'Same game, higher standards', '✦', 'Est. 2024', '✦', 'Discipline fuels freedom', '✦', 'Good players, better people', '✦'];
+marq.innerHTML = [...mItems, ...mItems, ...mItems].map(t => t === '✦' ? '<span class="g">✦</span>' : `<span>${t}</span>`).join('');
+let mx = 0, lastY = scrollY, vel = 0;
+
+let encore = 0; // 0..1 override that closes the curtain (easter egg)
+let skipTo = null;
+function frame(t) {
+  if (lenis) lenis.raf(t);
+  const y = scrollY; const dy = y - lastY; lastY = y; vel += (dy - vel) * .1;
+  const doc = document.documentElement.scrollHeight - vh;
+  prog.style.transform = `scaleX(${doc > 0 ? y / doc : 0})`;
+
+  if (!reduced) {
+    const p = secP(theatre);
+    const open = ease(clamp((p - .03) / .5)) * (1 - encore);
+    const gather = 1 - .8 * open;
+    const skew = clamp(vel * .04, -2, 2);
+    curL.style.transform = `translateX(${-open * 4}%) scaleX(${gather}) skewY(${skew * open * .5}deg)`;
+    curR.style.transform = `translateX(${open * 4}%) scaleX(${gather}) skewY(${-skew * open * .5}deg)`;
+    call.style.opacity = 1 - clamp(p / .07) - encore * 0;
+    call.style.transform = `translateY(${-clamp(p / .07) * 40}px)`;
+    const reveal = easeOut(clamp((p - .12) / .42)) * (1 - encore);
+    lit = .15 + .85 * reveal;
+    stage.style.setProperty('--lit', lit.toFixed(3));
+    const exit = clamp((p - .72) / .28);
+    valance.style.transform = `translateY(${-exit * 115}%)`;
+    showInner.style.transform = `translateY(${(1 - reveal) * 30 - exit * 60}px) scale(${.9 + .1 * reveal - exit * .06})`;
+    showInner.style.filter = `brightness(${.35 + .65 * reveal}) blur(${exit * 4}px)`;
+    showInner.style.opacity = 1 - exit * .7;
+    letters.forEach((l, i) => {
+      const q = easeOut(clamp((reveal - i * .04) / .5));
+      l.style.transform = `translateY(${(1 - q) * 50}px) rotateX(${(1 - q) * 60}deg)`;
+      l.style.opacity = .2 + .8 * q;
+    });
+    if (p < 1) drawDust(t);
+
+    // creed
+    const cp = secP(creed);
+    const lit2 = Math.floor(clamp((cp - .05) / .8) * (words.length + 1));
+    words.forEach((w, i) => w.classList.toggle('on', i < lit2));
+
+    // house
+    const hp = secP(house);
+    track.style.transform = `translateX(${-ease(hp) * trackSpan}px)`;
+  }
+  // marquee
+  mx -= .5 + Math.abs(vel) * .25;
+  const third = marq.scrollWidth / 3; if (-mx > third) mx += third;
+  marq.style.transform = `translateX(${mx}px) skewX(${clamp(-vel * .15, -10, 10)}deg)`;
+
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* ── cursor ─────────────────────────────────────── */
+const cur = $('.cursor'); let cx = innerWidth / 2, cy = innerHeight / 2, rx = cx, ry = cy;
+addEventListener('pointermove', e => {
+  cx = e.clientX; cy = e.clientY;
+  $('#lightsout').style.setProperty('--lx', cx + 'px'); $('#lightsout').style.setProperty('--ly', cy + 'px');
+  cur.classList.toggle('hot', !!e.target.closest('a,button,input,.mcard,.opt'));
+}, { passive: true });
+(function cl() { rx += (cx - rx) * .18; ry += (cy - ry) * .18; cur.firstElementChild.style.transform = `translate(${rx}px,${ry}px)`; cur.lastElementChild.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(cl); })();
+
+/* ── EGG: hold the seal ─────────────────────────── */
+const seal = $('#seal'); let holdT;
+const startHold = e => { e.preventDefault(); seal.classList.add('holding'); holdT = setTimeout(() => {
+  seal.classList.remove('holding'); unlock('seal', 'Some members do not wait for the curtain.');
+  const target = theatre.offsetTop + theatre.offsetHeight - vh * 1.05;
+  if (lenis) lenis.scrollTo(target, { duration: 2.6 }); else scrollTo({ top: target, behavior: 'smooth' });
+}, 1600); };
+const endHold = () => { seal.classList.remove('holding'); clearTimeout(holdT); };
+seal.addEventListener('pointerdown', startHold); ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => seal.addEventListener(ev, endHold));
+seal.addEventListener('click', () => { if (!found.has('seal')) toast('The seal does not open for a click. It opens for patience.', 'Hint'); });
+
+/* ── EGG: the cigar ─────────────────────────────── */
+let puffs = 0;
+$('#ember').addEventListener('click', e => {
+  const crest = $('#crest'), r = crest.getBoundingClientRect(), b = e.currentTarget.getBoundingClientRect();
+  for (let i = 0; i < 3; i++) setTimeout(() => {
+    const s = document.createElement('span'); s.className = 'smoke';
+    s.style.left = (b.left - r.left + b.width / 2) + 'px'; s.style.top = (b.top - r.top + b.height / 2) + 'px';
+    crest.appendChild(s); setTimeout(() => s.remove(), 2700);
+  }, i * 260);
+  if (++puffs === 3) unlock('cigar', '"Discipline fuels freedom, kid. Now stop poking my cigar."');
+});
+
+/* ── EGG: encore (pull the cord) ────────────────── */
+$('#tassel').addEventListener('click', e => {
+  const el = e.currentTarget; el.classList.remove('pulled'); void el.offsetWidth; el.classList.add('pulled');
+  const t0 = performance.now();
+  (function anim(now) {
+    const k = (now - t0) / 2600;
+    encore = k < .35 ? easeOut(k / .35) : k < .55 ? 1 : 1 - ease(clamp((k - .55) / .45));
+    if (k < 1) requestAnimationFrame(anim); else encore = 0;
+  })(t0);
+  setTimeout(() => unlock('encore', 'Encore. The house always comes back for a bow.'), 1200);
+});
+
+/* ── EGG: type "toshi" / konami ─────────────────── */
+let keys = '', kon = [];
+const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+addEventListener('keydown', e => {
+  kon.push(e.key.length === 1 ? e.key.toLowerCase() : e.key); kon = kon.slice(-10);
+  if (kon.join() === KONAMI.join()) { kon = []; chipRain(); unlock('konami', 'High roller. The Shogun\'s table is open to you.'); }
+  if (e.target.closest('input')) return;
+  if (e.key.length === 1) { keys = (keys + e.key.toLowerCase()).slice(-5); if (keys === 'toshi') { keys = ''; lightsOut(); } }
+});
+function lightsOut() {
+  const lo = $('#lightsout'), w = $('#whisper');
+  lo.classList.add('on'); setTimeout(() => w.classList.add('on'), 700);
+  setTimeout(() => { lo.classList.remove('on'); w.classList.remove('on'); unlock('toshi', 'You said his name. The house went dark to listen.'); }, 6500);
+}
+function chipRain() {
+  const cv = $('#chips'), ctx = cv.getContext('2d'), dpr = Math.min(2, devicePixelRatio || 1);
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const cols = [['#b81e28', '#efe5cf'], ['#1a1d44', '#c9a24a'], ['#111', '#c9a24a'], ['#c9a24a', '#1a1d44']];
+  const chips = Array.from({ length: 70 }, () => ({ x: Math.random() * innerWidth, y: -Math.random() * innerHeight, vy: 3 + Math.random() * 4, r: 12 + Math.random() * 14, a: Math.random() * 6, va: (Math.random() - .5) * .2, c: cols[Math.random() * 4 | 0] }));
+  const t0 = performance.now();
+  (function f(now) {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    for (const c of chips) {
+      c.y += c.vy; c.vy += .06; c.a += c.va;
+      ctx.save(); ctx.translate(c.x, c.y); ctx.scale(1, Math.abs(Math.cos(c.a)) * .8 + .2);
+      ctx.fillStyle = c.c[0]; ctx.beginPath(); ctx.arc(0, 0, c.r, 0, 7); ctx.fill();
+      ctx.strokeStyle = c.c[1]; ctx.lineWidth = c.r * .22; ctx.setLineDash([c.r * .5, c.r * .5]); ctx.beginPath(); ctx.arc(0, 0, c.r * .82, 0, 7); ctx.stroke();
+      ctx.setLineDash([]); ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(0, 0, c.r * .5, 0, 7); ctx.stroke();
+      ctx.restore();
+    }
+    if (now - t0 < 4200) requestAnimationFrame(f); else ctx.clearRect(0, 0, innerWidth, innerHeight);
+  })(t0);
+}
+
+/* ── EGG: dice ──────────────────────────────────── */
+const PIPS = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
+function face(el, n) { el.innerHTML = Array.from({ length: 9 }, (_, i) => `<b class="${PIPS[n].includes(i) ? 'on' : ''}"></b>`).join(''); }
+const d1 = $('#d1'), d2 = $('#d2'); face(d1, 5); face(d2, 2);
+function roll() {
+  [d1, d2].forEach(d => { d.classList.remove('roll'); void d.offsetWidth; d.classList.add('roll'); });
+  let n = 0; const iv = setInterval(() => { face(d1, 1 + Math.random() * 6 | 0); face(d2, 1 + Math.random() * 6 | 0); if (++n > 7) { clearInterval(iv); done(); } }, 80);
+  function done() {
+    const a = 1 + Math.random() * 6 | 0, b = 1 + Math.random() * 6 | 0; face(d1, a); face(d2, b);
+    $('#dsum').textContent = `${a + b}${a + b === 7 ? ' ✦' : ''}`;
+    if (a + b === 7) unlock('seven', 'Lucky seven. The dice remember who rolled them.');
+  }
+}
+d1.addEventListener('click', roll); d2.addEventListener('click', roll);
+
+/* ── state ─────────────────────────────────────── */
+let S = Object.assign({ step: 1, name: '', email: '', x: '', toshiUser: '', archetype: null, cardName: '', cardStyle: 'obsidian', filed: false, approval: null, remote: false }, store.get('tsc-state', {}));
+const save = () => store.set('tsc-state', S);
+
+/* ── archetypes + reading ───────────────────────── */
+const ARCH = {
+  shogun: { n: 'The Shogun', num: 'I', motto: 'Command the table. Never the room\'s opinion.', traits: ['Composed under pressure', 'Plays the long game', 'At home in the high-stakes room'], metal: 'gold', tier: 'SHOGUN<br>HIGH TABLE',
+    g: '<path d="M18 62h60M24 62l-4-26 14 10 14-22 14 22 14-10-4 26" /><circle cx="48" cy="22" r="4"/><path d="M28 72h40"/>' },
+  ronin: { n: 'The Ronin', num: 'II', motto: 'No master but discipline.', traits: ['Self-made', 'Session limits, kept', 'Walks away a winner'], metal: 'obsidian', tier: 'RONIN<br>OWN PATH',
+    g: '<path d="M20 76L76 20M70 18l8 8M26 64l6 6M18 72l6 6"/><path d="M60 30l6 6"/><circle cx="48" cy="48" r="34" stroke-dasharray="3 6"/>' },
+  ambassador: { n: 'The Ambassador', num: 'III', motto: 'Every table is better with you at it.', traits: ['Knows everyone by name', 'Brings the room together', 'First to welcome a new member'], metal: 'crimson', tier: 'AMBASSADOR<br>THE ROOM',
+    g: '<circle cx="34" cy="38" r="10"/><circle cx="62" cy="38" r="10"/><path d="M16 74c2-14 12-20 18-20s16 6 18 20M44 74c2-14 12-20 18-20s16 6 18 20"/>' },
+  alchemist: { n: 'The Alchemist', num: 'IV', motto: 'Trust, but verify the seed.', traits: ['Reads the math', 'Checks every hash', 'Turns patience into gold'], metal: 'platinum', tier: 'ALCHEMIST<br>THE SEED',
+    g: '<path d="M38 16h20M42 16v22L22 74h52L54 38V16"/><path d="M30 60h36"/><circle cx="44" cy="68" r="2"/><circle cx="54" cy="64" r="2"/>' },
+  phantom: { n: 'The Phantom', num: 'V', motto: 'In, out, and paid before anyone noticed.', traits: ['Private by default', 'Withdraws instantly, quietly', 'Never in the screenshot'], metal: 'navy', tier: 'PHANTOM<br>UNSEEN',
+    g: '<path d="M14 40c10-8 24-10 34 0 10-10 24-8 34 0-2 14-12 22-22 22-6 0-10-4-12-8-2 4-6 8-12 8-10 0-20-8-22-22z"/><circle cx="34" cy="44" r="5"/><circle cx="62" cy="44" r="5"/>' },
+  patron: { n: 'The Patron', num: 'VI', motto: 'Good players. Better people. Mostly better people.', traits: ['Tips the chat', 'Makes it rain for the community', 'Remembered for generosity'], metal: 'rose', tier: 'PATRON<br>OPEN HAND',
+    g: '<rect x="22" y="30" width="52" height="42" rx="3"/><path d="M22 42h52M48 30v42M48 30c-6-12-20-12-18-2 2 6 18 2 18 2s16 4 18-2c2-10-12-10-18 2"/>' }
+};
+const QUIZ = [
+  { q: 'The table goes cold. You…', o: [['Raise. Fortune favours whoever stays calm.', 'shogun'], ['Leave. The session ended an hour ago.', 'ronin'], ['Pull up a chair for the person beside you.', 'ambassador'], ['Check the seeds, then decide.', 'alchemist']] },
+  { q: 'Your ideal night out.', o: [['A private room. No names.', 'phantom'], ['Hosting forty people who all know each other through you.', 'ambassador'], ['A quiet bar and a long talk about odds.', 'alchemist'], ['Buying the whole room a round.', 'patron']] },
+  { q: 'A big win lands. First move?', o: [['Withdraw instantly. Tell no one.', 'phantom'], ['Tip the chat.', 'patron'], ['Bank it, exactly as planned.', 'ronin'], ['Verify the bet. Then celebrate.', 'alchemist']] },
+  { q: 'Choose an object.', o: [['A katana', 'ronin'], ['A fountain pen', 'alchemist'], ['A signet ring', 'shogun'], ['A stack of red envelopes', 'patron']] },
+  { q: 'What does discipline buy you?', o: [['The freedom to walk away.', 'ronin'], ['The right to go big.', 'shogun'], ['Time with your people.', 'ambassador'], ['Silence.', 'phantom']] },
+  { q: 'How do you enter a room?', o: [['Everyone notices.', 'shogun'], ['Nobody notices.', 'phantom'], ['Already knowing everyone\'s name.', 'ambassador'], ['Carrying a gift.', 'patron']] }
+];
+let qi = 0, tally = {};
+function renderQ() {
+  const Q = QUIZ[qi];
+  $('#qcount').textContent = `QUESTION ${qi + 1} OF ${QUIZ.length}`;
+  $('#qbar').style.transform = `scaleX(${qi / QUIZ.length})`;
+  $('#qtext').textContent = Q.q;
+  const opts = $('#opts'); opts.innerHTML = '';
+  Q.o.forEach(([txt, a], i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'opt'; b.dataset.k = 'abcd'[i]; b.textContent = txt;
+    b.addEventListener('click', () => {
+      b.classList.add('pick'); tally[a] = (tally[a] || 0) + 1;
+      setTimeout(() => { qi++; qi < QUIZ.length ? renderQ() : finishQuiz(); }, 380);
+    });
+    opts.appendChild(b);
+  });
+}
+function finishQuiz() {
+  $('#qbar').style.transform = 'scaleX(1)';
+  const max = Math.max(...Object.values(tally));
+  const tops = Object.keys(tally).filter(k => tally[k] === max);
+  const pick = tops[Math.random() * tops.length | 0];
+  S.archetype = pick; if (!S.cardTouched) S.cardStyle = ARCH[pick].metal; save();
+  showReading(true);
+  remoteUpdate({ archetype: pick, step: 4 });
+  setStep(4, true);
+}
+function showReading(animate) {
+  const A = ARCH[S.archetype]; if (!A) return;
+  $('#quiz').hidden = true; $('#reading').hidden = false;
+  $('#tNum').textContent = A.num; $('#tName').textContent = A.n.toUpperCase();
+  $('#tGlyph').innerHTML = `<svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${A.g}</svg>`;
+  $('#aName').textContent = A.n; $('#aMotto').textContent = A.motto;
+  $('#aTraits').innerHTML = A.traits.map(t => `<li>${t}</li>`).join('');
+  const tarot = $('#tarot');
+  if (animate) { tarot.classList.remove('flip'); setTimeout(() => tarot.classList.add('flip'), 500); } else tarot.classList.add('flip');
+  applyCard();
+}
+$('#retake').addEventListener('click', () => { qi = 0; tally = {}; $('#quiz').hidden = false; $('#reading').hidden = true; renderQ(); });
+renderQ();
+
+/* ── steps ─────────────────────────────────────── */
+function setStep(n, keepPanel3) {
+  S.step = Math.max(S.step, n); save();
+  $$('#steps li').forEach(li => { const s = +li.dataset.s; li.classList.toggle('cur', s === n); li.classList.toggle('done', s < n || (s === 4 && S.filed && S.archetype && n === 4 && S.cardReserved)); });
+  ['p1', 'p2', 'p3', 'p4'].forEach((id, i) => $('#' + id).hidden = (i + 1) !== n);
+  if (n === 4 && keepPanel3) { $('#p3').hidden = false; $('#p4').hidden = true; }
+  renderStatus();
+}
+function renderStatus() {
+  const pill = $('#statusPill');
+  let s = 'STATUS · NOT YET FILED';
+  if (S.filed) s = S.approval === 'approved' ? 'STATUS · APPROVED ✦' : S.approval === 'declined' ? 'STATUS · NOT THIS SEASON' : 'STATUS · UNDER REVIEW';
+  pill.textContent = s;
+  const approved = S.approval === 'approved';
+  $('#proof').textContent = approved ? 'MEMBER' : 'PROOF';
+  $('#atelierFine').textContent = approved ? 'Approved. Your card will be struck exactly as reserved here.' : S.filed ? 'Your petition is under review. Reserve the design now; it is struck once the committee approves you.' : 'Cards are struck for approved members only. What you see here is a proof.';
+}
+
+/* ── petition (I) ──────────────────────────────── */
+const fName = $('#fName'), fEmail = $('#fEmail'), fX = $('#fX'), fToshi = $('#fToshi');
+fName.value = S.name; fEmail.value = S.email; fX.value = S.x; fToshi.value = S.toshiUser;
+[fName, fEmail, fX, fToshi].forEach(i => i.addEventListener('input', () => { S.name = fName.value; S.email = fEmail.value; S.x = fX.value.replace(/^@/, ''); S.toshiUser = fToshi.value; save(); }));
+$('#p1').addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = fName.value.trim(), email = fEmail.value.trim(), x = fX.value.trim().replace(/^@/, '');
+  let ok = true;
+  $('#eName').textContent = name.length >= 2 ? '' : (ok = false, 'Write your name as you would sign it.');
+  $('#eEmail').textContent = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? '' : (ok = false, 'That address will not reach you. Check the spelling.');
+  $('#eX').textContent = /^[A-Za-z0-9_]{1,15}$/.test(x) ? '' : (ok = false, 'X usernames use letters, numbers and underscores, up to 15.');
+  if (!ok) return;
+  Object.assign(S, { name, email, x }); if (!S.cardName) S.cardName = name.toUpperCase().slice(0, 22);
+  $('#wax').classList.add('stamp');
+  await fileRemote();
+  S.filed = true; save();
+  setTimeout(() => { setStep(2); $('#wax').classList.remove('stamp'); applyCard(); }, 1300);
+});
+
+/* ── enter the house (II) ──────────────────────── */
+let doorOpened = S.step > 2;
+$('#houseLink').addEventListener('click', () => { doorOpened = true; });
+$('#p2').addEventListener('submit', e => {
+  e.preventDefault();
+  const u = fToshi.value.trim();
+  if (!doorOpened) { $('#eToshi').textContent = 'Open Toshi.bet through the club door above first.'; return; }
+  if (u.length < 2) { $('#eToshi').textContent = 'Add the username shown on your Toshi.bet profile.'; return; }
+  $('#eToshi').textContent = ''; S.toshiUser = u; save();
+  remoteUpdate({ toshiUser: u, step: 3 });
+  setStep(3);
+});
+
+/* ── card atelier ──────────────────────────────── */
+const METALS = [
+  ['obsidian', 'Obsidian', 'Black anodised steel with a gold-leaf engraving. Quiet, heavy, unmistakable.'],
+  ['gold', 'Sovereign Gold', '24-karat finish over brushed steel. For the head of the table.'],
+  ['platinum', 'Platinum', 'Mirror-polished platinum tone. Cold to the touch, impossible to ignore.'],
+  ['rose', 'Rose Gold', 'Warm rose alloy with a satin brush.'],
+  ['titanium', 'Titanium', 'Bead-blasted grade-5 titanium with a spun finish.'],
+  ['crimson', 'Velour Crimson', 'Deep crimson lacquer with a velvet hand and gold inlay. The curtain, in your wallet.'],
+  ['navy', 'Midnight Navy', 'Navy anodised steel and gold, in the club\'s own colours.'],
+  ['pearl', 'Mother of Pearl', 'Iridescent pearl inlay that changes as you tilt it.'],
+  ['genesis', 'Genesis', 'Block zero. For those who know the name.', 'secret'],
+  ['vault', 'The Vault', 'Black lacquer veined with gold. Only for those who found all seven.', 'secret']
+];
+const mcard = $('#mcard'), cardName = $('#cardName');
+function renderSwatches() {
+  const box = $('#swatches'); box.innerHTML = '';
+  METALS.forEach(([id, label, , secret]) => {
+    if (id === 'genesis' && !found.has('genesis')) return;
+    const locked = id === 'vault' && found.size < 7;
+    const b = document.createElement('button'); b.type = 'button'; b.className = `sw m-${id}${locked ? ' locked' : ''}`;
+    b.setAttribute('aria-pressed', S.cardStyle === id); b.innerHTML = `<i></i><span>${locked ? '???' : label}</span>`;
+    b.addEventListener('click', () => {
+      if (locked) { toast(`Find all seven secrets to unlock this finish. ${found.size} of 7 so far.`, 'Locked'); return; }
+      S.cardStyle = id; S.cardTouched = true; save(); applyCard(); renderSwatches();
+    });
+    box.appendChild(b);
+  });
+}
+function hash(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+function applyCard() {
+  const nm = (S.cardName || S.name || '').toUpperCase().trim();
+  mcard.className = mcard.className.replace(/\bm-\w+/g, '').trim() + ' m-' + S.cardStyle;
+  $('#cName').textContent = nm || 'YOUR NAME';
+  $('#cSig').textContent = nm ? nm.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()) : 'Your Name';
+  const h = hash(nm || 'citizen').toString().padStart(10, '0');
+  $('#cNum').textContent = `TSC 2024 ${h.slice(0, 4)} ${h.slice(4, 8)}`;
+  const d = new Date(); $('#cSince').textContent = `MEMBER SINCE ${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getFullYear()).slice(2)}`;
+  $('#cTier').innerHTML = S.archetype ? ARCH[S.archetype].tier : 'INTERNET<br>CITIZEN';
+  const m = METALS.find(m => m[0] === S.cardStyle); $('#styleNote').textContent = m ? m[2] : '';
+  if (document.activeElement !== cardName) cardName.value = S.cardName || '';
+}
+cardName.addEventListener('input', () => {
+  S.cardName = cardName.value.toUpperCase(); save(); applyCard();
+  if (/SATOSHI|NAKAMOTO/.test(S.cardName) && !found.has('genesis')) {
+    found.add('genesis'); store.set('tsc-secrets', [...found]); renderSecrets();
+    toast('Block zero. The Genesis finish is now in your atelier.', `Secret ${found.size} of 7`);
+    S.cardStyle = 'genesis'; save(); renderSwatches(); applyCard();
+    if (found.size === 7) setTimeout(() => { toast('All seven found. The Vault finish is yours.', 'The Vault'); renderSwatches(); }, 4600);
+  }
+});
+renderSwatches(); applyCard();
+
+// tilt
+const cs = $('#cardstage'); let tx = 0, ty = 0, tgx = 0, tgy = 0, hovering = false, flipped = false, downAt = null;
+cs.addEventListener('pointermove', e => {
+  const r = mcard.getBoundingClientRect();
+  const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+  tgx = clamp((px - .5) * 2, -1.4, 1.4); tgy = clamp((py - .5) * 2, -1.4, 1.4); hovering = true;
+});
+cs.addEventListener('pointerleave', () => hovering = false);
+(function tilt(t) {
+  if (!hovering) { tgx = Math.sin(t / 1800) * .45; tgy = Math.cos(t / 2300) * .3; }
+  tx += (tgx - tx) * .08; ty += (tgy - ty) * .08;
+  mcard.style.setProperty('--ry', (tx * 16).toFixed(2) + 'deg');
+  mcard.style.setProperty('--rx', (-ty * 12).toFixed(2) + 'deg');
+  mcard.style.setProperty('--sx', (50 + tx * 45 * (flipped ? -1 : 1)) + '%');
+  mcard.style.setProperty('--sy', (40 + ty * 45) + '%');
+  requestAnimationFrame(tilt);
+})(0);
+function flip() { flipped = !flipped; $('#flipwrap').style.transform = flipped ? 'rotateY(180deg)' : ''; }
+mcard.addEventListener('click', flip);
+mcard.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+
+$('#reserve').addEventListener('click', async () => {
+  if (!S.filed) { toast('File your petition first. The atelier strikes cards for petitioners only.', 'Not yet'); const t = $('#initiation'); lenis ? lenis.scrollTo(t, { duration: 2 }) : t.scrollIntoView({ behavior: 'smooth' }); return; }
+  if (!(S.cardName || '').trim()) { toast('Engrave a name first.', 'The atelier'); cardName.focus(); return; }
+  S.cardReserved = true; save();
+  const ok = await remoteUpdate({ card: { name: S.cardName.trim(), style: S.cardStyle } });
+  $('#reserveState').textContent = ok ? 'RESERVED ✦' : 'SAVED ON THIS DEVICE';
+  toast(ok ? 'Your design is with the committee.' : 'Your design is saved in this browser.', 'Reserved');
+  setStep(4);
+});
+
+/* ── club registry (db) ────────────────────────── */
+let db = null, uid = null, isOwner = false;
+async function fileRemote() {
+  if (!db || !uid) { showLocalNote(); return false; }
+  try {
+    await db.doc('applications/' + uid).set({ name: S.name, email: S.email, x: S.x, toshiUser: S.toshiUser || '', archetype: S.archetype || null, card: { name: (S.cardName || '').trim(), style: S.cardStyle }, filedAt: Date.now() });
+    S.remote = true; save(); return true;
+  } catch { showLocalNote(); return false; }
+}
+async function remoteUpdate(patch) {
+  if (!S.remote || !db || !uid) return false;
+  try { await db.doc('applications/' + uid).update(patch); return true; } catch { return false; }
+}
+function showLocalNote() {
+  const code = 'TSC-' + hash((S.email || '') + (S.x || '')).toString(36).toUpperCase().slice(0, 6);
+  const n = $('#localNote'); n.hidden = false;
+  n.innerHTML = `This browser can't reach the club registry, so your petition is sealed on this device only. Send your seal code <span class="code">${code}</span> with your X username to the member who invited you.`;
+  $('#p4lede').textContent = 'Design the card you\'ll carry. Approved members receive it struck in metal.';
+}
+async function connect() {
+  if (!window.claude || !claude.use) return;
+  try {
+    const [d, u] = await Promise.all([claude.use('db'), claude.use('user')]);
+    db = d; if (!u) return;
+    isOwner = await u.isOwner().catch(() => false);
+    uid = await u.id().catch(() => null);
+    if (db && uid) {
+      const snap = await db.doc('applications/' + uid).get().catch(() => null);
+      if (snap && snap.exists) {
+        const a = snap.data(); S.remote = true; S.filed = true;
+        Object.assign(S, { name: a.name || S.name, email: a.email || S.email, x: a.x || S.x, toshiUser: a.toshiUser || S.toshiUser, archetype: a.archetype || S.archetype });
+        if (a.card) { S.cardName = a.card.name || S.cardName; S.cardStyle = a.card.style || S.cardStyle; }
+        save(); boot();
+      } else if (S.filed && !S.remote) { await fileRemote(); }
+      db.doc('approvals/' + uid).onSnapshot(s => { S.approval = s.exists ? s.data().status : null; save(); renderStatus(); }, () => {});
+    }
+    if (isOwner && db) openRegistry();
+  } catch {}
+}
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function openRegistry() {
+  $('#registry').hidden = false; measure();
+  let apps = [], appr = {};
+  const render = () => {
+    const tb = $('#ledgerBody');
+    if (!apps.length) { tb.innerHTML = '<tr><td colspan="9" class="empty">No petitions yet. They appear here the moment someone seals one.</td></tr>'; return; }
+    tb.innerHTML = apps.map(d => {
+      const a = d.data(), st = appr[d.id] || 'pending', A = ARCH[a.archetype];
+      return `<tr><td>${esc(a.name)}</td><td>${esc(a.email)}</td><td><a href="https://x.com/${encodeURIComponent(a.x || '')}" target="_blank" rel="noopener">@${esc(a.x)}</a></td><td>${esc(a.toshiUser) || '—'}</td><td>${A ? esc(A.n) : '—'}</td><td>${a.card ? esc(a.card.name) + '<br><small>' + esc(a.card.style) + '</small>' : '—'}</td><td>${a.filedAt ? new Date(a.filedAt).toLocaleDateString() : '—'}</td><td class="s">${st.toUpperCase()}</td>
+        <td><div class="acts"><button class="btn sm" data-a="approved" data-id="${esc(d.id)}">Approve</button><button class="btn sm ghost" data-a="declined" data-id="${esc(d.id)}">Decline</button></div></td></tr>`;
+    }).join('');
+  };
+  db.collection('applications').orderBy('filedAt', 'desc').onSnapshot(s => { apps = s.docs; render(); }, () => {});
+  db.collection('approvals').onSnapshot(s => { appr = {}; s.docs.forEach(d => appr[d.id] = d.data().status); render(); }, () => {});
+  $('#ledgerBody').addEventListener('click', async e => {
+    const b = e.target.closest('button[data-a]'); if (!b) return;
+    b.disabled = true;
+    try { await db.doc('approvals/' + b.dataset.id).set({ status: b.dataset.a, at: Date.now() }); toast(b.dataset.a === 'approved' ? 'Welcome them in.' : 'Marked not this season.', 'The registry'); }
+    catch { toast('The registry did not accept that change. Try again in a moment.', 'The registry'); }
+    b.disabled = false;
+  });
+}
+
+/* ── boot ──────────────────────────────────────── */
+function boot() {
+  fName.value = S.name; fEmail.value = S.email; fX.value = S.x; fToshi.value = S.toshiUser;
+  const step = S.filed ? (S.step >= 4 && S.archetype ? 4 : Math.max(2, S.step)) : 1;
+  setStep(step, step === 4 && !!S.archetype);
+  if (S.archetype) showReading(false);
+  if (S.cardReserved) $('#reserveState').textContent = S.remote ? 'RESERVED ✦' : 'SAVED ON THIS DEVICE';
+  if (S.filed && !S.remote) showLocalNote();
+  applyCard(); renderSwatches();
+}
+boot();
+connect();
+
+console.log('%cTOSHI.BET SOCIAL CLUB', 'font:900 28px Archivo,sans-serif;color:#c9a24a;background:#2a040b;padding:10px 18px');
+console.log('%cCurious ones make the best members. Try the old code. ↑↑↓↓←→←→BA', 'color:#b8ab93;font-style:italic');
+})();
+</script>
+
+</body>
+</html>
