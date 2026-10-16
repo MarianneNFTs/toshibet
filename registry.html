@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b0710">
+<title>The Registry · Toshi.bet Social Club</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus+SC&family=Pinyon+Script&family=Share+Tech+Mono&display=swap">
+<style>
+/* The committee's ledger: a quiet working page in the club's colours. */
+:root{
+  --ink:#0b0710; --panel:#150a12; --velvet:#2a040b; --gold:#c9a24a; --gold-hi:#f4dc98; --ivory:#efe5cf; --dim:#b8ab93; --faint:#857a68;
+  --line:rgba(201,162,74,.24); --ok:#7fc79a; --no:#e0727a; --wait:#e2c27a;
+  --f-display:"Bodoni Moda",Didot,Georgia,serif; --f-body:"Cormorant Garamond",Garamond,Georgia,serif;
+  --f-label:"Marcellus SC","Trajan Pro",Georgia,serif; --f-script:"Pinyon Script",cursive; --f-mono:"Share Tech Mono",ui-monospace,monospace;
+  --foil:linear-gradient(100deg,#7d5a1f,#e9cd7f 18%,#a77a2a 34%,#fff0c0 50%,#b08332 64%,#f1d68c 82%,#7d5a1f);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ink)}
+body{color:var(--dim);font:18px/1.5 var(--f-body);-webkit-font-smoothing:antialiased;min-height:100vh;
+  background:radial-gradient(80% 50% at 50% 0%,#24101c,var(--ink) 70%) fixed;
+  padding:calc(28px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(60px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+[hidden]{display:none!important}
+a{color:var(--gold-hi)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:1px solid var(--gold-hi);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto}
+.label{font-family:var(--f-label);letter-spacing:.28em;text-transform:uppercase;font-size:11px;color:var(--gold)}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:34px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand img{width:44px;height:auto}
+.brand span{font-family:var(--f-label);letter-spacing:.26em;font-size:11px;color:var(--ivory)}
+h1{font-family:var(--f-display);font-weight:500;font-variation-settings:"opsz" 18;font-size:clamp(40px,6vw,72px);line-height:.95;color:var(--ivory);margin:6px 0 0}
+h1 i{font-family:var(--f-script);font-style:normal;font-weight:400;color:#d9323c;font-size:1.12em}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-label);letter-spacing:.2em;text-transform:uppercase;font-size:11px;cursor:pointer;border:0;border-radius:2px;padding:11px 16px;
+  color:#1b1205;background:var(--foil);background-size:200% 100%;transition:background-position .6s}
+.btn:hover{background-position:100% 0}
+.btn.ghost{background:transparent;color:var(--gold-hi);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--gold)}
+.btn.ok{background:transparent;color:var(--ok);border:1px solid rgba(127,199,154,.4)}
+.btn.no{background:transparent;color:var(--no);border:1px solid rgba(224,114,122,.4)}
+.btn[disabled]{opacity:.4;cursor:wait}
+.tools{display:flex;gap:10px;flex-wrap:wrap}
+
+/* gate */
+.gate{max-width:440px;margin:10vh auto 0;text-align:center;display:grid;gap:22px;justify-items:center;padding:44px 32px;
+  background:linear-gradient(170deg,#2a0710,#150309);border:1px solid var(--line);box-shadow:0 40px 80px -30px #000,inset 0 0 0 8px rgba(11,7,16,.5),inset 0 0 0 9px var(--line)}
+.gate img{width:84px}
+.gate h1{font-size:44px}
+.gate form{display:grid;gap:14px;width:100%}
+.gate input{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:2px;padding:13px 14px;color:var(--ivory);font-family:var(--f-mono);letter-spacing:.12em;text-align:center}
+.gate input:focus{border-color:var(--gold);outline:none}
+.err{color:var(--no);font-size:16px;min-height:1.4em;margin:0}
+
+/* summary */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{background:var(--panel);border:1px solid var(--line);padding:16px 18px;cursor:pointer;text-align:left;transition:border-color .3s}
+.stat[aria-pressed="true"]{border-color:var(--gold-hi);box-shadow:inset 0 0 0 1px var(--gold-hi)}
+.stat b{display:block;font-family:var(--f-display);font-variation-settings:"opsz" 18;font-weight:500;font-size:38px;line-height:1;color:var(--ivory);font-variant-numeric:tabular-nums}
+.stat .label{font-size:10px}
+.stat.pending b{color:var(--wait)} .stat.approved b{color:var(--ok)} .stat.declined b{color:var(--no)}
+.bar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
+.search{flex:1;min-width:220px;max-width:420px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:2px;padding:10px 14px;color:var(--ivory)}
+.search:focus{outline:none;border-color:var(--gold)}
+.meta{font-size:15px;color:var(--faint)}
+
+/* ledger */
+.ledger{overflow-x:auto;border:1px solid var(--line);background:rgba(21,10,18,.7)}
+table{width:100%;border-collapse:collapse;min-width:980px;font-size:17px}
+th{font-family:var(--f-label);letter-spacing:.18em;font-size:10px;font-weight:400;color:var(--gold);text-align:left;padding:14px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:14px;border-bottom:1px solid rgba(201,162,74,.1);color:var(--ivory);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td .sub{display:block;font-size:14px;color:var(--faint)}
+td.mono{font-family:var(--f-mono);font-size:14px;letter-spacing:.06em}
+.pill{display:inline-block;font-family:var(--f-label);letter-spacing:.16em;font-size:10px;padding:5px 9px;border:1px solid currentColor;white-space:nowrap}
+.pill.pending{color:var(--wait)} .pill.approved{color:var(--ok)} .pill.declined{color:var(--no)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.sw{display:inline-block;width:22px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:6px;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
+.empty{padding:56px 20px;text-align:center;font-style:italic;font-size:20px}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,150%);transition:transform .5s cubic-bezier(.2,.9,.2,1);
+  background:#2a0710;border:1px solid var(--gold);color:var(--ivory);padding:12px 20px;font-style:italic;max-width:calc(100vw - 32px);z-index:5}
+.toast.on{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="gate" id="gate">
+    <img src="/brand/mascot.webp" alt="">
+    <div><span class="label">Committee eyes only</span><h1>The <i>Registry</i></h1></div>
+    <form id="loginForm">
+      <label class="label" for="pw">Committee password</label>
+      <input id="pw" type="password" autocomplete="current-password" required>
+      <button class="btn" type="submit" id="loginBtn">Open the ledger</button>
+      <p class="err" id="loginErr" role="alert"></p>
+    </form>
+  </section>
+
+  <main id="app" hidden>
+    <header>
+      <div>
+        <a class="brand" href="/"><img src="/brand/mascot.webp" alt=""><span>Toshi.bet&nbsp;Social&nbsp;Club</span></a>
+        <h1>The <i>Registry</i></h1>
+      </div>
+      <div class="tools">
+        <button class="btn ghost" id="refresh" type="button">Refresh</button>
+        <button class="btn ghost" id="csv" type="button">Export CSV</button>
+        <button class="btn ghost" id="logout" type="button">Lock</button>
+      </div>
+    </header>
+
+    <div class="stats" id="stats">
+      <button class="stat" data-f="all" aria-pressed="true" type="button"><b id="nAll">0</b><span class="label">Petitions</span></button>
+      <button class="stat pending" data-f="pending" aria-pressed="false" type="button"><b id="nPending">0</b><span class="label">Under review</span></button>
+      <button class="stat approved" data-f="approved" aria-pressed="false" type="button"><b id="nApproved">0</b><span class="label">Approved</span></button>
+      <button class="stat declined" data-f="declined" aria-pressed="false" type="button"><b id="nDeclined">0</b><span class="label">Not this season</span></button>
+    </div>
+
+    <div class="bar">
+      <input class="search" id="q" type="search" placeholder="Search name, email, X or Toshi.bet username" aria-label="Search petitions">
+      <span class="meta" id="updated"></span>
+    </div>
+
+    <div class="ledger"><table>
+      <thead><tr><th>Petitioner</th><th>X</th><th>Toshi.bet</th><th>Temperament</th><th>Card</th><th>Filed</th><th>Status</th><th>Decision</th></tr></thead>
+      <tbody id="rows"><tr><td colspan="8" class="empty">Opening the ledger…</td></tr></tbody>
+    </table></div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+const $ = s => document.querySelector(s);
+const ARCH = { shogun: 'The Shogun', ronin: 'The Ronin', ambassador: 'The Ambassador', alchemist: 'The Alchemist', phantom: 'The Phantom', patron: 'The Patron' };
+const METAL = { obsidian: ['Obsidian', '#111114'], gold: ['Sovereign Gold', '#d9b25c'], platinum: ['Platinum', '#d6d9dc'], rose: ['Rose Gold', '#d79a85'], titanium: ['Titanium', '#5c6066'],
+  crimson: ['Velour Crimson', '#8e1222'], toshiblue: ['Toshi Blue', '#0a10e6'], dojo: ['Dojo Orange', '#f26a00'], navy: ['Midnight Navy', '#1b1f4d'], pearl: ['Mother of Pearl', '#ece6f0'], genesis: ['Genesis', '#f7931a'], vault: ['The Vault', '#2a1d10'] };
+const LABEL = { pending: 'Under review', approved: 'Approved', declined: 'Not this season' };
+let pw = '', all = [], filter = 'all', toastT;
+try { pw = sessionStorage.getItem('tsc-registry') || ''; } catch {}
+
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const when = t => t ? new Date(t).toLocaleString(undefined, { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '—';
+function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 3200); }
+
+async function api(method, body) {
+  const r = await fetch('/api/registry', { method, headers: { Authorization: 'Bearer ' + pw, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(j.error || 'The registry did not answer.'); e.status = r.status; throw e; }
+  return j;
+}
+
+async function load(quiet) {
+  try {
+    const j = await api('GET');
+    all = j.petitions || []; render();
+    $('#updated').textContent = 'Updated ' + new Date().toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+    if (!quiet) toast(all.length ? `${all.length} petition${all.length === 1 ? '' : 's'} in the ledger.` : 'The ledger is empty for now.');
+    return true;
+  } catch (e) {
+    if (e.status === 401 || e.status === 429) { lock(e.message); return false; }
+    toast(e.message); return false;
+  }
+}
+
+function render() {
+  const count = s => all.filter(p => p.status === s).length;
+  $('#nAll').textContent = all.length; $('#nPending').textContent = count('pending'); $('#nApproved').textContent = count('approved'); $('#nDeclined').textContent = count('declined');
+  document.querySelectorAll('.stat').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === filter));
+  const q = $('#q').value.trim().toLowerCase();
+  const rows = all.filter(p => (filter === 'all' || p.status === filter) && (!q || [p.name, p.email, p.x, p.toshiUser].some(v => String(v || '').toLowerCase().includes(q))));
+  const tb = $('#rows');
+  if (!rows.length) {
+    tb.innerHTML = `<tr><td colspan="8" class="empty">${all.length ? 'No petitions match.' : 'No petitions yet. They appear here the moment someone seals one on the site.'}</td></tr>`;
+    return;
+  }
+  tb.innerHTML = rows.map(p => {
+    const m = METAL[p.card?.style] || ['—', 'transparent'];
+    const x = p.x ? `<a href="https://x.com/${encodeURIComponent(p.x)}" target="_blank" rel="noopener">@${esc(p.x)}</a>` : '—';
+    return `<tr>
+      <td>${esc(p.name)}<span class="sub">${esc(p.email)}</span></td>
+      <td>${x}</td>
+      <td class="mono">${esc(p.toshiUser) || '<span class="sub">Not yet</span>'}</td>
+      <td>${ARCH[p.archetype] ? esc(ARCH[p.archetype]) : '<span class="sub">Not yet read</span>'}</td>
+      <td><span class="sw" style="background:${m[1]}"></span>${esc(m[0])}<span class="sub mono">${esc(p.card?.name) || '—'}</span></td>
+      <td>${when(p.filedAt)}</td>
+      <td><span class="pill ${esc(p.status)}">${esc(LABEL[p.status] || p.status)}</span>${p.decidedAt ? `<span class="sub">${when(p.decidedAt)}</span>` : ''}</td>
+      <td><div class="acts">
+        ${p.status !== 'approved' ? `<button class="btn ok" data-id="${esc(p.id)}" data-s="approved" type="button">Approve</button>` : ''}
+        ${p.status !== 'declined' ? `<button class="btn no" data-id="${esc(p.id)}" data-s="declined" type="button">Decline</button>` : ''}
+        ${p.status !== 'pending' ? `<button class="btn ghost" data-id="${esc(p.id)}" data-s="pending" type="button">Undo</button>` : ''}
+      </div></td></tr>`;
+  }).join('');
+}
+
+$('#rows').addEventListener('click', async e => {
+  const b = e.target.closest('button[data-s]'); if (!b) return;
+  b.disabled = true;
+  try {
+    const { petition } = await api('POST', { id: b.dataset.id, status: b.dataset.s });
+    all = all.map(p => p.id === petition.id ? petition : p); render();
+    toast(petition.status === 'approved' ? `${petition.name} is in. Their card now reads MEMBER.` : petition.status === 'declined' ? `${petition.name}: not this season.` : `${petition.name} is back under review.`);
+  } catch (err) {
+    if (err.status === 401) lock(err.message); else toast(err.message);
+    b.disabled = false;
+  }
+});
+
+function lock(msg) {
+  pw = ''; try { sessionStorage.removeItem('tsc-registry'); } catch {}
+  $('#app').hidden = true; $('#gate').hidden = false; $('#loginErr').textContent = msg || ''; $('#pw').value = ''; $('#pw').focus();
+}
+$('#loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  pw = $('#pw').value; $('#loginErr').textContent = ''; $('#loginBtn').disabled = true;
+  try {
+    await api('GET');
+    try { sessionStorage.setItem('tsc-registry', pw); } catch {}
+    $('#gate').hidden = true; $('#app').hidden = false; await load();
+  } catch (err) { $('#loginErr').textContent = err.message; pw = ''; }
+  $('#loginBtn').disabled = false;
+});
+
+$('#stats').addEventListener('click', e => { const b = e.target.closest('.stat'); if (b) { filter = b.dataset.f; render(); } });
+$('#q').addEventListener('input', render);
+$('#refresh').addEventListener('click', () => load());
+$('#logout').addEventListener('click', () => lock(''));
+$('#csv').addEventListener('click', () => {
+  const head = ['Name', 'Email', 'X', 'Toshi.bet username', 'Temperament', 'Card engraving', 'Card metal', 'Filed', 'Status', 'Decided'];
+  const cell = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+  const iso = t => t ? new Date(t).toISOString() : '';
+  const lines = [head, ...all.map(p => [p.name, p.email, p.x ? '@' + p.x : '', p.toshiUser, ARCH[p.archetype] || '', p.card?.name, (METAL[p.card?.style] || [''])[0], iso(p.filedAt), LABEL[p.status] || p.status, iso(p.decidedAt)])];
+  const blob = new Blob(['﻿' + lines.map(r => r.map(cell).join(',')).join('\r\n')], { type: 'text/csv' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `toshi-social-club-petitions-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+document.addEventListener('visibilitychange', () => { if (!document.hidden && pw && !$('#app').hidden) load(true); });
+
+if (pw) { $('#gate').hidden = true; $('#app').hidden = false; load(true); } else $('#pw').focus();
+})();
+</script>
+</body>
+</html>

@@ -724,21 +724,6 @@ footer{position:relative;padding-block:120px 60px;text-align:center;background:l
   </div>
 </section>
 
-<!-- ═════════ THE REGISTRY (owner only) ═════════ -->
-<section id="registry" class="act" hidden aria-label="The registry">
-  <div class="wrap">
-    <div class="act-head">
-      <span class="label">Committee eyes only</span>
-      <h2>The <i>Registry</i></h2>
-      <p>Petitions filed through this page. Approving a petitioner unlocks their card as approved.</p>
-    </div>
-    <div class="ledger"><table>
-      <thead><tr><th>Petitioner</th><th>Email</th><th>X</th><th>Toshi.bet</th><th>Temperament</th><th>Card</th><th>Filed</th><th>Status</th><th></th></tr></thead>
-      <tbody id="ledgerBody"><tr><td colspan="9" class="empty">No petitions yet. They appear here the moment someone seals one.</td></tr></tbody>
-    </table></div>
-  </div>
-</section>
-
 <footer>
   <div class="rope" aria-hidden="true">
     <svg viewBox="0 0 900 120" preserveAspectRatio="none"><defs><linearGradient id="rp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4303a"/><stop offset=".5" stop-color="#7c0f1d"/><stop offset="1" stop-color="#3a050e"/></linearGradient><linearGradient id="post" x1="0" x2="1"><stop offset="0" stop-color="#6f5019"/><stop offset=".4" stop-color="#f4dc98"/><stop offset="1" stop-color="#6f5019"/></linearGradient></defs>
@@ -1256,67 +1241,38 @@ $('#reserve').addEventListener('click', async () => {
   setStep(4);
 });
 
-/* ── club registry (db) ────────────────────────── */
-let db = null, uid = null, isOwner = false;
-async function fileRemote() {
-  if (!db || !uid) { showLocalNote(); return false; }
+/* ── club registry (server: /api) ──────────────── */
+// The browser keeps a random petition id; it is the applicant's key to their own petition.
+function pid() {
+  if (!S.pid) { const a = new Uint8Array(18); crypto.getRandomValues(a); S.pid = [...a].map(b => b.toString(16).padStart(2, '0')).join(''); save(); }
+  return S.pid;
+}
+function applyStatus(st) { S.approval = st === 'approved' || st === 'declined' ? st : null; save(); renderStatus(); }
+async function sendPetition() {
   try {
-    await db.doc('applications/' + uid).set({ name: S.name, email: S.email, x: S.x, toshiUser: S.toshiUser || '', archetype: S.archetype || null, card: { name: (S.cardName || '').trim(), style: S.cardStyle }, filedAt: Date.now() });
-    S.remote = true; save(); return true;
-  } catch { showLocalNote(); return false; }
+    const r = await fetch('/api/petition', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: pid(), name: S.name, email: S.email, x: S.x, toshiUser: S.toshiUser || '', archetype: S.archetype || null, card: { name: (S.cardName || '').trim(), style: S.cardStyle } }) });
+    if (!r.ok) return false;
+    const j = await r.json();
+    S.remote = true; save(); $('#localNote').hidden = true; applyStatus(j.status);
+    return true;
+  } catch { return false; }
 }
-async function remoteUpdate(patch) {
-  if (!S.remote || !db || !uid) return false;
-  try { await db.doc('applications/' + uid).update(patch); return true; } catch { return false; }
-}
+async function fileRemote() { const ok = await sendPetition(); if (!ok) showLocalNote(); return ok; }
+// Every later step re-sends the whole petition; the server keeps the filing date and status.
+async function remoteUpdate() { return S.filed ? sendPetition() : false; }
 function showLocalNote() {
-  const code = 'TSC-' + hash((S.email || '') + (S.x || '')).toString(36).toUpperCase().slice(0, 6);
   const n = $('#localNote'); n.hidden = false;
-  n.innerHTML = `This browser can't reach the club registry, so your petition is sealed on this device only. Send your seal code <span class="code">${code}</span> with your X username to the member who invited you.`;
-  $('#p4lede').textContent = 'Design the card you\'ll carry. Approved members receive it struck in metal.';
+  n.textContent = 'The club registry could not be reached just now. Your petition is saved in this browser and will be filed automatically the next time you open this page.';
 }
 async function connect() {
-  if (!window.claude || !claude.use) return;
+  if (!S.filed) return;
+  if (!S.remote) { await fileRemote(); return; }
   try {
-    const [d, u] = await Promise.all([claude.use('db'), claude.use('user')]);
-    db = d; if (!u) return;
-    isOwner = await u.isOwner().catch(() => false);
-    uid = await u.id().catch(() => null);
-    if (db && uid) {
-      const snap = await db.doc('applications/' + uid).get().catch(() => null);
-      if (snap && snap.exists) {
-        const a = snap.data(); S.remote = true; S.filed = true;
-        Object.assign(S, { name: a.name || S.name, email: a.email || S.email, x: a.x || S.x, toshiUser: a.toshiUser || S.toshiUser, archetype: a.archetype || S.archetype });
-        if (a.card) { S.cardName = a.card.name || S.cardName; S.cardStyle = a.card.style || S.cardStyle; }
-        save(); boot();
-      } else if (S.filed && !S.remote) { await fileRemote(); }
-      db.doc('approvals/' + uid).onSnapshot(s => { S.approval = s.exists ? s.data().status : null; save(); renderStatus(); }, () => {});
-    }
-    if (isOwner && db) openRegistry();
+    const r = await fetch('/api/status?id=' + encodeURIComponent(pid()));
+    if (r.status === 404) { S.remote = false; await fileRemote(); return; }
+    if (r.ok) applyStatus((await r.json()).status);
   } catch {}
-}
-function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
-function openRegistry() {
-  $('#registry').hidden = false; measure();
-  let apps = [], appr = {};
-  const render = () => {
-    const tb = $('#ledgerBody');
-    if (!apps.length) { tb.innerHTML = '<tr><td colspan="9" class="empty">No petitions yet. They appear here the moment someone seals one.</td></tr>'; return; }
-    tb.innerHTML = apps.map(d => {
-      const a = d.data(), st = appr[d.id] || 'pending', A = ARCH[a.archetype];
-      return `<tr><td>${esc(a.name)}</td><td>${esc(a.email)}</td><td><a href="https://x.com/${encodeURIComponent(a.x || '')}" target="_blank" rel="noopener">@${esc(a.x)}</a></td><td>${esc(a.toshiUser) || '—'}</td><td>${A ? esc(A.n) : '—'}</td><td>${a.card ? esc(a.card.name) + '<br><small>' + esc(a.card.style) + '</small>' : '—'}</td><td>${a.filedAt ? new Date(a.filedAt).toLocaleDateString() : '—'}</td><td class="s">${st.toUpperCase()}</td>
-        <td><div class="acts"><button class="btn sm" data-a="approved" data-id="${esc(d.id)}">Approve</button><button class="btn sm ghost" data-a="declined" data-id="${esc(d.id)}">Decline</button></div></td></tr>`;
-    }).join('');
-  };
-  db.collection('applications').orderBy('filedAt', 'desc').onSnapshot(s => { apps = s.docs; render(); }, () => {});
-  db.collection('approvals').onSnapshot(s => { appr = {}; s.docs.forEach(d => appr[d.id] = d.data().status); render(); }, () => {});
-  $('#ledgerBody').addEventListener('click', async e => {
-    const b = e.target.closest('button[data-a]'); if (!b) return;
-    b.disabled = true;
-    try { await db.doc('approvals/' + b.dataset.id).set({ status: b.dataset.a, at: Date.now() }); toast(b.dataset.a === 'approved' ? 'Welcome them in.' : 'Marked not this season.', 'The registry'); }
-    catch { toast('The registry did not accept that change. Try again in a moment.', 'The registry'); }
-    b.disabled = false;
-  });
 }
 
 /* ── boot ──────────────────────────────────────── */
